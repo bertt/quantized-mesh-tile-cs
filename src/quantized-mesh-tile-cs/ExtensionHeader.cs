@@ -10,8 +10,8 @@ namespace Quantized.Mesh.Tile
 
         public ExtensionHeader(FastBinaryReader reader)
         {
-            this.extensionId = reader.ReadByte();
-            this.extensionLength = reader.ReadUInt32();
+            extensionId = reader.ReadByte();
+            extensionLength = reader.ReadUInt32();
         }
     }
 }

@@ -10,8 +10,8 @@ namespace Quantized.Mesh.Tile
 
         public NormalExtensionData(FastBinaryReader reader, uint vertCount)
         {
-            this.vertexCount = vertCount;
-            this.xy = new byte[vertexCount * 2];
+            vertexCount = vertCount;
+            xy = new byte[vertexCount * 2];
 
             for (int i = 0; i < vertexCount * 2; i++)
                 xy[i] = reader.ReadByte();

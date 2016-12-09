@@ -10,7 +10,7 @@ namespace Quantized.Mesh.Tile
 
         public IndexData16(FastBinaryReader reader)
         {
-            this.triangleCount = reader.ReadUInt32();
+            triangleCount = reader.ReadUInt32();
             indices = new ushort[triangleCount * 3];
 
             ushort highest = 0;
@@ -49,26 +49,26 @@ namespace Quantized.Mesh.Tile
 
         public EdgeIndices16(FastBinaryReader reader)
         {
-            this.westVertexCount = reader.ReadUInt32();
-            this.westIndices = new ushort[westVertexCount];
+            westVertexCount = reader.ReadUInt32();
+            westIndices = new ushort[westVertexCount];
 
             for (int i = 0; i < westVertexCount; i++)
                 westIndices[i] = reader.ReadUInt16();
 
-            this.southVertexCount = reader.ReadUInt32();
-            this.southIndices = new ushort[southVertexCount];
+            southVertexCount = reader.ReadUInt32();
+            southIndices = new ushort[southVertexCount];
 
             for (int i = 0; i < southVertexCount; i++)
                 southIndices[i] = reader.ReadUInt16();
 
-            this.eastVertexCount = reader.ReadUInt32();
-            this.eastIndices = new ushort[eastVertexCount];
+            eastVertexCount = reader.ReadUInt32();
+            eastIndices = new ushort[eastVertexCount];
 
             for (int i = 0; i < eastVertexCount; i++)
                 eastIndices[i] = reader.ReadUInt16();
 
-            this.northVertexCount = reader.ReadUInt32();
-            this.northIndices = new ushort[northVertexCount];
+            northVertexCount = reader.ReadUInt32();
+            northIndices = new ushort[northVertexCount];
 
             for (int i = 0; i < northVertexCount; i++)
                 northIndices[i] = reader.ReadUInt16();

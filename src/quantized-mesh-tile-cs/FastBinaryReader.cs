@@ -17,10 +17,10 @@ namespace Quantized.Mesh.Tile
 
         public FastBinaryReader(GZipStream cStream)
         {
-            this.compressedStream = cStream;
-            this.memStream = new MemoryStream();
+            compressedStream = cStream;
+            memStream = new MemoryStream();
 
-            this.compressedStream.CopyTo(memStream, 8192);
+            compressedStream.CopyTo(memStream, 8192);
             data = memStream.ToArray();
             memStream.Dispose();
 

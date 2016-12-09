@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using Quantized.Mesh.Tile;
 
 namespace Quantized.Mesh.Tile.Tests
 {

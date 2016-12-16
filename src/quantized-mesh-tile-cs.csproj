@@ -42,6 +42,7 @@
     <Compile Include="NormalExtensionData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuantizedMeshHeader.cs" />
+    <Compile Include="QuantizedMeshTile.cs" />
     <Compile Include="QuantizedMeshTileParser.cs" />
     <Compile Include="VertexData.cs" />
     <Compile Include="ZigZag.cs" />

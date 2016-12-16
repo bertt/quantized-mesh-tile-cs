@@ -3,21 +3,24 @@ using System.IO.Compression;
 
 namespace Quantized.Mesh.Tile
 {
+
+
     public class QuantizedMeshTileParser
     {
-        public static void Parse(Stream tileStream)
+        public static QuantizedMeshTile Parse(Stream tileStream)
         {
-            using (var zStream = new GZipStream(tileStream, CompressionMode.Decompress))
-            {
-                using (var reader = new FastBinaryReader(zStream))
+            var quantizedMeshTile = new QuantizedMeshTile();
+            //using (var zStream = new GZipStream(tileStream, CompressionMode.Decompress))
+            //{
+                using (var reader = new FastBinaryReader(tileStream))
                 {
-                    // read header
-                    var header = new QuantizedMeshHeader(reader);
-                    var vertexData = new VertexData(reader);
-                    var indexData = new IndexData16(reader);
-                    var edgeIndexData = new EdgeIndices16(reader);
+                    quantizedMeshTile.QuantizedMeshHeader = new QuantizedMeshHeader(reader);
+                    // todo:
+                    //quantizedMeshTile.VertexData = new VertexData(reader);
+                    //quantizedMeshTile.IndexData16 = new IndexData16(reader);
+                    //quantizedMeshTile.EdgeIndices16 = new EdgeIndices16(reader);
 
-                    NormalExtensionData normalData;
+                    // NormalExtensionData normalData;
                     while (reader.HasMore())
                     {
                         var extensionHeader = new ExtensionHeader(reader);
@@ -25,13 +28,15 @@ namespace Quantized.Mesh.Tile
                         if (extensionHeader.extensionId == 1)
                         {
                             // oct-encoded per vertex normals
-                            normalData = new NormalExtensionData(reader, vertexData.vertexCount);
+                            // todo:
+                            // quantizedMeshTile.NormalExtensionData = new NormalExtensionData(reader, quantizedMeshTile.VertexData.vertexCount);
                         }
                     }
 
                     // ?? int a = 10;
                 }
-            }
+            //}
+            return quantizedMeshTile;
         }
 
     }

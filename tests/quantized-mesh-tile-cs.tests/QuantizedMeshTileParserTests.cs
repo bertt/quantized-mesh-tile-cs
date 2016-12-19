@@ -15,19 +15,30 @@ namespace Quantized.Mesh.Tile.Tests
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(firstTerrainFile);
             var qmt = QuantizedMeshTileParser.Parse(pbfStream);
             // assert
+
             Assert.IsTrue(qmt != null);
-            Assert.IsTrue(qmt.QuantizedMeshHeader.CenterX == 7.1132635158129229E+73);
+
+            // check headers
+            Assert.IsTrue(qmt.Header.CenterX == 4492197.38443436);
+            Assert.IsTrue(qmt.Header.CenterY == 596134.0874495716);
+            Assert.IsTrue(qmt.Header.CenterZ == 4473851.280340988);
+            Assert.IsTrue(qmt.Header.MinimumHeight == 206.3408660888672);
+            Assert.IsTrue(qmt.Header.MaximumHeight == 787.9429931640625);
+            Assert.IsTrue(qmt.Header.BoundingSphereCenterX == 4492197.38443436);
+            Assert.IsTrue(qmt.Header.BoundingSphereCenterY == 596134.0874495716);
+            Assert.IsTrue(qmt.Header.BoundingSphereCenterZ == 4473851.280340988);
+            Assert.IsTrue(qmt.Header.BoundingSphereRadius== 24100.511082898243);
+            Assert.IsTrue(qmt.Header.HorizonOcclusionPointX== 0.5);
+            Assert.IsTrue(qmt.Header.HorizonOcclusionPointY == 0.5);
+            Assert.IsTrue(qmt.Header.HorizonOcclusionPointZ == 0.5);
+
+            // check vertexdata
+            Assert.IsTrue(qmt.VertexData.vertexCount==103);
+            Assert.IsTrue(qmt.VertexData.u[0] == 21075);
+            Assert.IsTrue(qmt.VertexData.v[0] == 26684);
+            Assert.IsTrue(qmt.VertexData.height[0] == 543);
+
+            // todo: check IndexData, EdgeIndices, extensions
         }
-
-        // testtile (results from python):
-        // header:
-        // bytesplit: 65636
-        // 
-        // OrderedDict([('boundingSphereCenterX', 6.091146503455036e+247), ('boundingSphereCenterY', 5.557314938566923e+169), ('boundingSphereCenterZ', 8.030372574023344e+165), ('boundingSphereRadius', 2.763781852442052e+256), ('centerX', 7.113263515812923e+73), ('centerY', 5.5275507747549546e+252), ('centerZ', 1.8009413134742474e+219), ('horizonOcclusionPointX', 1.237560387612898e+214), ('horizonOcclusionPointY', 4.370732370697291e-19), ('horizonOcclusionPointZ', 4.781796516189379e+180), ('maximumHeight', 2.566903154561799e-18), ('minimumHeight', 2.7223549023138454e+20)])
-
-        // maxx: 7.734375
-        // maxy: 45.0
-        // minx: 7.3828125
-        // miny: 44.6484375
     }
 }

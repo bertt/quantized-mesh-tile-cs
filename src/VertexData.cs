@@ -46,9 +46,5 @@ namespace Quantized.Mesh.Tile
             }
         }
 
-        //private ushort zigZagDecode(ushort val)
-        //{
-        //    return (ushort)((val >> 1) ^ (-(val & 1)));
-        //}
     }
 }

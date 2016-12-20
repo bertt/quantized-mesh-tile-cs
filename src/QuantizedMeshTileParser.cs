@@ -7,8 +7,7 @@ namespace Quantized.Mesh.Tile
         public static QuantizedMeshTile Parse(Stream tileStream)
         {
             var quantizedMeshTile = new QuantizedMeshTile();
-            //using (var zStream = new GZipStream(tileStream, CompressionMode.Decompress))
-            //{
+
             using (var reader = new FastBinaryReader(tileStream))
             {
                 quantizedMeshTile.Header = new QuantizedMeshHeader(reader);
@@ -21,17 +20,18 @@ namespace Quantized.Mesh.Tile
                 {
                     var extensionHeader = new ExtensionHeader(reader);
 
+                    // extensionid 1: per vertex lighting attributes
                     if (extensionHeader.extensionId == 1)
                     {
                         // oct-encoded per vertex normals
                         // todo:
-                        quantizedMeshTile.NormalExtensionData = new NormalExtensionData(reader, quantizedMeshTile.VertexData.vertexCount);
+                        // quantizedMeshTile.NormalExtensionData = new NormalExtensionData(reader, quantizedMeshTile.VertexData.vertexCount);
+                    }
+                    else if(extensionHeader.extensionId == 2) {
+                        // todo extensionid 2: per vertex watermark
                     }
                 }
-
-                // ?? int a = 10;
             }
-            //}
             return quantizedMeshTile;
         }
     }

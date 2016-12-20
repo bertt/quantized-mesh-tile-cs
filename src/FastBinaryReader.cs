@@ -40,12 +40,12 @@ namespace Quantized.Mesh.Tile
             fixedPtr = (byte*)handle.AddrOfPinnedObject().ToPointer();
         }
 
-        public byte* FixedPtr { get { return fixedPtr; } }
+        // public byte* FixedPtr { get { return fixedPtr; } }
 
-        public void AdvanceBytes(uint numBytes)
-        {
-            fixedPtr = fixedPtr + numBytes;
-        }
+        //public void AdvanceBytes(uint numBytes)
+        //{
+        //    fixedPtr = fixedPtr + numBytes;
+        //}
 
         public bool HasMore()
         {

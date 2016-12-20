@@ -69,11 +69,27 @@ namespace Quantized.Mesh.Tile.Tests
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(firstTerrainFile);
             var qmt = QuantizedMeshTileParser.Parse(pbfStream);
 
-            // assert
+            // todo: check extensions
             //Assert.IsTrue(qmt.NormalExtensionData.vertexCount == 4);
             //Assert.IsTrue(qmt.NormalExtensionData.xy.Length == 8);
             //Assert.IsTrue(qmt.NormalExtensionData.xy[0] == 0);
             //Assert.IsTrue(qmt.NormalExtensionData.xy[7] == 203);
         }
+
+
+        [Test]
+        public void TestAnotherTileParsing()
+        {
+            // arrange
+            const string firstTerrainFile = "Quantized.Mesh.Tile.Tests.data.10_1563_590_light_watermask.terrain";
+
+            // act
+            var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(firstTerrainFile);
+            var qmt = QuantizedMeshTileParser.Parse(pbfStream);
+
+            // todo: check extensions
+        }
+
+
     }
 }

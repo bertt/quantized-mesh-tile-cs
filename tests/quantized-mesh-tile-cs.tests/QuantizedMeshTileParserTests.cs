@@ -1,4 +1,7 @@
 ﻿using NUnit.Framework;
+using System.IO;
+using System.Net;
+using System.Net.Http;
 using System.Reflection;
 
 namespace Quantized.Mesh.Tile.Tests
@@ -69,6 +72,8 @@ namespace Quantized.Mesh.Tile.Tests
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(firstTerrainFile);
             var qmt = QuantizedMeshTileParser.Parse(pbfStream);
 
+            Assert.IsTrue(qmt!=null);
+
             // todo: check extensions
             //Assert.IsTrue(qmt.NormalExtensionData.vertexCount == 4);
             //Assert.IsTrue(qmt.NormalExtensionData.xy.Length == 8);
@@ -87,8 +92,36 @@ namespace Quantized.Mesh.Tile.Tests
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(firstTerrainFile);
             var qmt = QuantizedMeshTileParser.Parse(pbfStream);
 
+            Assert.IsTrue(qmt != null);
+
             // todo: check extensions
         }
+
+
+        [Test]
+        public void TestTerrainTileFromWebParsing()
+        {
+            // arrange
+            const string terrainTileUrl = "http://assets.agi.com/stk-terrain/v1/tilesets/world/tiles/0/0/0.terrain";
+
+            var gzipWebClient = new HttpClient(new HttpClientHandler()
+            {
+                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
+            });
+            var bytes = gzipWebClient.GetByteArrayAsync(terrainTileUrl).Result;
+
+            var stream = new MemoryStream(bytes);
+
+            // act
+            var qmt = QuantizedMeshTileParser.Parse(stream);
+
+            // assert
+            Assert.IsTrue(qmt != null);
+            Assert.IsTrue(qmt.IndexData16.triangleCount == 400);
+
+        }
+
+
 
 
     }

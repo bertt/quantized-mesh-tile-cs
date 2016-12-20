@@ -12,6 +12,12 @@ mapbox-vector-tile.v2.ncrunchsolution
 *.user
 *.sln.docstates
 
+# NCrunch
+*.ncrunch*
+.*crunch*.local.xml
+
+.vs
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/

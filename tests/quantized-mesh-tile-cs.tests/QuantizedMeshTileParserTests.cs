@@ -38,7 +38,13 @@ namespace Quantized.Mesh.Tile.Tests
             Assert.IsTrue(qmt.VertexData.v[0] == 26684);
             Assert.IsTrue(qmt.VertexData.height[0] == 543);
 
-            // todo: check IndexData, EdgeIndices, extensions
+            // check IndexData
+            Assert.IsTrue(qmt.IndexData16.indices.Length == 381);
+            Assert.IsTrue(qmt.IndexData16.indices[0]== 0);
+            Assert.IsTrue(qmt.IndexData16.indices[qmt.IndexData16.indices.Length-1] == 100);
+            Assert.IsTrue(qmt.IndexData16.indices.Length/3 == qmt.IndexData16.triangleCount);
+
+
         }
     }
 }

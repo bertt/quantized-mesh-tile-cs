@@ -64,6 +64,24 @@ namespace Terrain.Tile.Tests
         }
 
         [Test]
+        public void TestGetTriangles()
+        {
+            // arrange
+            const string firstTerrainFile = "Terrain.Tile.Tests.data.9_533_383.terrain";
+            var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(firstTerrainFile);
+            var terrainTile = TerrainTileParser.Parse(pbfStream);
+
+            // act
+            var triangles = terrainTile.GetTriangles(533,383,9);
+
+            // assert
+            Assert.IsTrue(triangles.Count == 127);
+            Assert.IsTrue(triangles[0].Coordinate1.Height == 215.97891519320481);
+            Assert.IsTrue(triangles[0].Coordinate1.X == 7.608929620502335);
+            Assert.IsTrue(triangles[0].Coordinate1.Y == 44.93473449850459);
+        }
+
+        [Test]
         public void TestWatermarkTileParsing()
         {
             // arrange
@@ -81,7 +99,6 @@ namespace Terrain.Tile.Tests
             //Assert.IsTrue(qmt.NormalExtensionData.xy[0] == 0);
             //Assert.IsTrue(qmt.NormalExtensionData.xy[7] == 203);
         }
-
 
         [Test]
         public void TestAnotherTileParsing()
@@ -114,10 +131,15 @@ namespace Terrain.Tile.Tests
 
             // act
             var terrainTile = TerrainTileParser.Parse(stream);
+            var triangles = terrainTile.GetTriangles(0, 0, 0);
 
             // assert
             Assert.IsTrue(terrainTile != null);
-            Assert.IsTrue(terrainTile.IndexData16.triangleCount == 400);
+            Assert.IsTrue(triangles.Count == 400);
+
+            Assert.IsTrue(triangles[0].Coordinate1.X == -180);
+            Assert.IsTrue(triangles[0].Coordinate1.Y == -78.755149998474081);
+            Assert.IsTrue(triangles[0].Coordinate1.Height == -55.24706495350631);
         }
     }
 }

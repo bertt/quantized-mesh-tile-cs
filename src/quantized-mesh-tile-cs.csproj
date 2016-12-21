@@ -38,13 +38,16 @@
   <ItemGroup>
     <Compile Include="ExtensionHeader.cs" />
     <Compile Include="FastBinaryReader.cs" />
+    <Compile Include="GlobalGeodetic.cs" />
     <Compile Include="IndexData.cs" />
     <Compile Include="Mathf.cs" />
     <Compile Include="NormalExtensionData.cs" />
+    <Compile Include="Coordinate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TerrainTileHeader.cs" />
     <Compile Include="TerrainTile.cs" />
     <Compile Include="TerrainTileParser.cs" />
+    <Compile Include="Triangle.cs" />
     <Compile Include="VertexData.cs" />
     <Compile Include="ZigZag.cs" />
   </ItemGroup>

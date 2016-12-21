@@ -4,11 +4,11 @@ namespace Terrain.Tile
 {
     public class TerrainTile
     {
-        public TerrainTileHeader Header {get;set;}
+        public TerrainTileHeader Header { get; set; }
         public VertexData VertexData { get; set; }
         public IndexData16 IndexData16 { get; set; }
         public EdgeIndices16 EdgeIndices16 { get; set; }
-        public NormalExtensionData NormalExtensionData { get; set; }
+        // public NormalExtensionData NormalExtensionData { get; set; }
         private const int MAX = 32767;
 
         public List<Triangle> GetTriangles(int x, int y, int z)
@@ -16,10 +16,10 @@ namespace Terrain.Tile
             var bounds = GlobalGeodetic.GetTileBounds(x, y, z);
             var triangles = new List<Triangle>();
 
-            for(var i = 0; i < IndexData16.indices.Length; i+=3)
+            for (var i = 0; i < IndexData16.indices.Length; i += 3)
             {
                 var firstIndex = IndexData16.indices[i];
-                var secondIndex = IndexData16.indices[i+1];
+                var secondIndex = IndexData16.indices[i + 1];
                 var thirdIndex = IndexData16.indices[i + 2];
 
                 var c1 = GetCoordinate(firstIndex, bounds);

@@ -27,7 +27,8 @@ namespace Terrain.Tile
                         // todo:
                         // quantizedMeshTile.NormalExtensionData = new NormalExtensionData(reader, quantizedMeshTile.VertexData.vertexCount);
                     }
-                    else if(extensionHeader.extensionId == 2) {
+                    else if (extensionHeader.extensionId == 2)
+                    {
                         // todo extensionid 2: per vertex watermark
                     }
                 }

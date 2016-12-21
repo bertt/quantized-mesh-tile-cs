@@ -72,7 +72,7 @@ namespace Terrain.Tile.Tests
             var terrainTile = TerrainTileParser.Parse(pbfStream);
 
             // act
-            var triangles = terrainTile.GetTriangles(533,383,9);
+            var triangles = terrainTile.GetTriangles(533, 383, 9);
 
             // assert
             Assert.IsTrue(triangles.Count == 127);
@@ -91,7 +91,7 @@ namespace Terrain.Tile.Tests
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(firstTerrainFile);
             var terrainTile = TerrainTileParser.Parse(pbfStream);
 
-            Assert.IsTrue(terrainTile!=null);
+            Assert.IsTrue(terrainTile != null);
 
             // todo: check extensions
             //Assert.IsTrue(qmt.NormalExtensionData.vertexCount == 4);

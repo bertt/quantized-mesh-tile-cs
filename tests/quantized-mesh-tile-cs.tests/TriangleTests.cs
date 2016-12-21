@@ -2,10 +2,10 @@
 
 namespace Terrain.Tile.Tests
 {
-    public class TraingleTests
+    public class TriangleTests
     {
         [Test]
-        public void TraingleTest()
+        public void TriangleTest()
         {
             // arrange
             var c1 = new Coordinate(0, 0, 0);

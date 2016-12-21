@@ -48,7 +48,7 @@
     <Compile Include="LerpTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TerrainTileParserTests.cs" />
-    <Compile Include="TraingleTests.cs" />
+    <Compile Include="TriangleTests.cs" />
     <Compile Include="ZigZagTests.cs" />
   </ItemGroup>
   <ItemGroup>

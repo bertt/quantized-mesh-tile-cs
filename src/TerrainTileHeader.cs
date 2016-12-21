@@ -1,9 +1,9 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace Quantized.Mesh.Tile
+namespace Terrain.Tile
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct QuantizedMeshHeader
+    public struct TerrainTileHeader
     {
         // The center of the tile in Earth-centered Fixed coordinates.
         public double CenterX;
@@ -32,7 +32,7 @@ namespace Quantized.Mesh.Tile
         public double HorizonOcclusionPointY;
         public double HorizonOcclusionPointZ;
 
-        public QuantizedMeshHeader(FastBinaryReader reader)
+        public TerrainTileHeader(FastBinaryReader reader)
         {
             CenterX = reader.ReadDouble();
             CenterY = reader.ReadDouble();

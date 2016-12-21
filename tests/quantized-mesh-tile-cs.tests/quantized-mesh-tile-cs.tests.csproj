@@ -7,8 +7,8 @@
     <ProjectGuid>{BEA67283-2FAA-4E9B-8A92-92C2DC92EC0B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Quantized.Mesh.Tile.Tests</RootNamespace>
-    <AssemblyName>Quantized.Mesh.Tile.Tests</AssemblyName>
+    <RootNamespace>Terrain.Tile.Tests</RootNamespace>
+    <AssemblyName>Terrain.Tile.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -44,8 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LerpTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QuantizedMeshTileParserTests.cs" />
+    <Compile Include="TerrainTileParserTests.cs" />
     <Compile Include="ZigZagTests.cs" />
   </ItemGroup>
   <ItemGroup>

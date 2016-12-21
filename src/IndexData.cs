@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace Quantized.Mesh.Tile
+namespace Terrain.Tile
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct IndexData16

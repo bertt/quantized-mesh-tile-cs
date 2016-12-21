@@ -1,19 +1,19 @@
 ﻿using System.IO;
 
-namespace Quantized.Mesh.Tile
+namespace Terrain.Tile
 {
-    public class QuantizedMeshTileParser
+    public class TerrainTileParser
     {
-        public static QuantizedMeshTile Parse(Stream tileStream)
+        public static TerrainTile Parse(Stream tileStream)
         {
-            var quantizedMeshTile = new QuantizedMeshTile();
+            var terrainTile = new TerrainTile();
 
             using (var reader = new FastBinaryReader(tileStream))
             {
-                quantizedMeshTile.Header = new QuantizedMeshHeader(reader);
-                quantizedMeshTile.VertexData = new VertexData(reader);
-                quantizedMeshTile.IndexData16 = new IndexData16(reader);
-                quantizedMeshTile.EdgeIndices16 = new EdgeIndices16(reader);
+                terrainTile.Header = new TerrainTileHeader(reader);
+                terrainTile.VertexData = new VertexData(reader);
+                terrainTile.IndexData16 = new IndexData16(reader);
+                terrainTile.EdgeIndices16 = new EdgeIndices16(reader);
 
                 // NormalExtensionData normalData;
                 while (reader.HasMore())
@@ -32,7 +32,7 @@ namespace Quantized.Mesh.Tile
                     }
                 }
             }
-            return quantizedMeshTile;
+            return terrainTile;
         }
     }
 }

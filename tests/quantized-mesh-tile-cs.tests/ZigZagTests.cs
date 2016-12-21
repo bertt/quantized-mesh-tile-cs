@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
+using System;
 
-namespace Quantized.Mesh.Tile.Tests
+namespace Terrain.Tile.Tests
 {
 
     public class ZigZagTests

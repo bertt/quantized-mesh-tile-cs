@@ -7,8 +7,8 @@
     <ProjectGuid>{6AD5FB82-A205-4059-90A7-D8081A504640}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Quantized.Mesh.Tile</RootNamespace>
-    <AssemblyName>Quantized.Mesh.Tile</AssemblyName>
+    <RootNamespace>Terrain.Tile</RootNamespace>
+    <AssemblyName>Terrain.Tile</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,11 +39,12 @@
     <Compile Include="ExtensionHeader.cs" />
     <Compile Include="FastBinaryReader.cs" />
     <Compile Include="IndexData.cs" />
+    <Compile Include="Mathf.cs" />
     <Compile Include="NormalExtensionData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QuantizedMeshHeader.cs" />
-    <Compile Include="QuantizedMeshTile.cs" />
-    <Compile Include="QuantizedMeshTileParser.cs" />
+    <Compile Include="TerrainTileHeader.cs" />
+    <Compile Include="TerrainTile.cs" />
+    <Compile Include="TerrainTileParser.cs" />
     <Compile Include="VertexData.cs" />
     <Compile Include="ZigZag.cs" />
   </ItemGroup>

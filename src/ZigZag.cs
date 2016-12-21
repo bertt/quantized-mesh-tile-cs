@@ -1,4 +1,4 @@
-﻿namespace Quantized.Mesh.Tile
+﻿namespace Terrain.Tile
 {
     public static class ZigZag
     {

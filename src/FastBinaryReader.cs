@@ -1,37 +1,19 @@
 ﻿using System;
 using System.IO;
-using System.IO.Compression;
 using System.Runtime.InteropServices;
 
-namespace Quantized.Mesh.Tile
+namespace Terrain.Tile
 {
     public unsafe class FastBinaryReader : IDisposable
     {
-        private GZipStream compressedStream;
-        private MemoryStream memStream;
         private byte[] data;
         private long position;
 
         private GCHandle handle;
         private byte* fixedPtr;
 
-        /**
-        public OldFastBinaryReader(GZipStream cStream)
-        {
-            compressedStream = cStream;
-            memStream = new MemoryStream();
-
-            compressedStream.CopyTo(memStream, 8192);
-            data = memStream.ToArray();
-            memStream.Dispose();
-
-            handle = GCHandle.Alloc(data, GCHandleType.Pinned);
-            fixedPtr = (byte*)handle.AddrOfPinnedObject().ToPointer();
-        }*/
-
         public FastBinaryReader(Stream cStream)
         {
-            // use for now no gzip compression..
             var ms = new MemoryStream();
             cStream.CopyTo(ms);
             data = ms.ToArray();
@@ -39,13 +21,6 @@ namespace Quantized.Mesh.Tile
             handle = GCHandle.Alloc(data, GCHandleType.Pinned);
             fixedPtr = (byte*)handle.AddrOfPinnedObject().ToPointer();
         }
-
-        // public byte* FixedPtr { get { return fixedPtr; } }
-
-        //public void AdvanceBytes(uint numBytes)
-        //{
-        //    fixedPtr = fixedPtr + numBytes;
-        //}
 
         public bool HasMore()
         {

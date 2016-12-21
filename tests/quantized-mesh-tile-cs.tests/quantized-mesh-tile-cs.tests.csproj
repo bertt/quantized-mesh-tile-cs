@@ -57,7 +57,7 @@
     <EmbeddedResource Include="data\9_769_319_watermask.terrain" />
     <None Include="App.config" />
     <EmbeddedResource Include="data\ahn_416656.terrain" />
-    <EmbeddedResource Include="data\test.terrain" />
+    <EmbeddedResource Include="data\test_0_0_0.terrain" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

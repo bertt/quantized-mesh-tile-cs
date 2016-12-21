@@ -126,11 +126,6 @@ namespace Terrain.Tile.Tests
                 AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
             });
             var bytes = gzipWebClient.GetByteArrayAsync(terrainTileUrl).Result;
-
-            //var fileStream = new FileStream(@"d:/aaa/qm/test1.terrain", FileMode.Create,FileAccess.Write);
-            //fileStream.Write(bytes, 0, bytes.Length);
-            //fileStream.Close();
-
             var stream = new MemoryStream(bytes);
 
             // act
@@ -155,12 +150,11 @@ namespace Terrain.Tile.Tests
             Assert.IsTrue(triangles[0].Coordinate3.Height == -50.34768851199851);
         }
 
-
         [Test]
         public void TestAnotherTileParsing1()
         {
             // arrange
-            const string firstTerrainFile = "Terrain.Tile.Tests.data.test.terrain";
+            const string firstTerrainFile = "Terrain.Tile.Tests.data.test_0_0_0.terrain";
 
             // act
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(firstTerrainFile);

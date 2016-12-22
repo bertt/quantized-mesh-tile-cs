@@ -19,7 +19,7 @@ https://www.nuget.org/packages/quantized-mesh-tile
 
 NuGet package contains library for .NET Standard 1.1 
 
-Sample code:
+### Sample code:
 
 ```
 const string terrainTileUrl = "http://assets.agi.com/stk-terrain/v1/tilesets/world/tiles/0/0/0.terrain";

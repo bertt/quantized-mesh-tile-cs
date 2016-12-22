@@ -8,6 +8,17 @@ More info about the quantized mesh format: https://github.com/AnalyticalGraphics
 
 For more awesome quantized mesh implementations see https://github.com/bertt/awesome-quantized-mesh-tiles
 
+Dependencies: -
+
+###Get it from NuGet 
+`
+PM> Install-Package quantized-mesh-tile
+`
+
+https://www.nuget.org/packages/quantized-mesh-tile
+
+NuGet package contains library for .NET Standard 1.1 
+
 Sample code:
 
 ```

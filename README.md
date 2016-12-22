@@ -33,11 +33,11 @@ var bytes = gzipWebClient.GetByteArrayAsync(terrainTileUrl).Result;
 var stream = new MemoryStream(bytes);
 
 // act
-var qmt = QuantizedMeshTileParser.Parse(stream);
+var terrainTile = TerrainTileParser.Parse(stream);
 var triangles = terrainTile.GetTriangles(0, 0, 0);
 
 // assert
-Assert.IsTrue(qmt != null);
+Assert.IsTrue(terrainTile != null);
 Assert.IsTrue(triangles.Count == 400);
 Assert.IsTrue(triangles[0].Coordinate1.X == -180);
 Assert.IsTrue(triangles[0].Coordinate1.Y == -78.755149998474081);

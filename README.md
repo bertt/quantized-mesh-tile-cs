@@ -29,5 +29,13 @@ Assert.IsTrue(triangles.Count == 400);
 Assert.IsTrue(triangles[0].Coordinate1.X == -180);
 Assert.IsTrue(triangles[0].Coordinate1.Y == -78.755149998474081);
 Assert.IsTrue(triangles[0].Coordinate1.Height == -55.24706495350631);
+
+Assert.IsTrue(triangles[0].Coordinate2.X == -180);
+Assert.IsTrue(triangles[0].Coordinate2.Y == -90);
+Assert.IsTrue(triangles[0].Coordinate2.Height == -29.85938702932947);
+
+Assert.IsTrue(triangles[0].Coordinate3.X == -168.75514999847408);
+Assert.IsTrue(triangles[0].Coordinate3.Y == -81.56773583178199);
+Assert.IsTrue(triangles[0].Coordinate3.Height == -50.34768851199851);
 ```
 ![wireframe](https://cesiumjs.org/images/2015/12-18/terrain-obb-wireframe.png)

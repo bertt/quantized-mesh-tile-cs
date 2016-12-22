@@ -4,7 +4,6 @@
     {
         public static double Lerp(double start, double end, double by)
         {
-            // return start * by + end * (1 - by);
             return (1 - by) * start + by * end;
         }
     }

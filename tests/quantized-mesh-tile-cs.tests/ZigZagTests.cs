@@ -1,9 +1,7 @@
 ﻿using NUnit.Framework;
-using System;
 
 namespace Terrain.Tile.Tests
 {
-
     public class ZigZagTests
     {
         [Test]
@@ -44,6 +42,5 @@ namespace Terrain.Tile.Tests
             // assert
             Assert.IsTrue(res == 3);
         }
-
     }
 }

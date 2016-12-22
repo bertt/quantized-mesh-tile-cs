@@ -1,5 +1,7 @@
 # quantized-mesh-tile-cs
 
+[![NuGet Status](http://img.shields.io/nuget/v/quantized-mesh-tile.svg?style=flat)](https://www.nuget.org/packages/quantized-mesh-tile/)
+
 A .NET library for decoding a quantized mesh tile into vertices.
 
 More info about the quantized mesh format: https://github.com/AnalyticalGraphicsInc/quantized-mesh

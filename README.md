@@ -1,12 +1,25 @@
 # quantized-mesh-tile-cs
 
+[![NuGet Status](http://img.shields.io/nuget/v/quantized-mesh-tile.svg?style=flat)](https://www.nuget.org/packages/quantized-mesh-tile/)
+
 A .NET library for decoding a quantized mesh tile into vertices.
 
 More info about the quantized mesh format: https://github.com/AnalyticalGraphicsInc/quantized-mesh
 
 For more awesome quantized mesh implementations see https://github.com/bertt/awesome-quantized-mesh-tiles
 
-Sample code:
+Dependencies: -
+
+###Get it from NuGet 
+`
+PM> Install-Package quantized-mesh-tile
+`
+
+https://www.nuget.org/packages/quantized-mesh-tile
+
+NuGet package contains library for .NET Standard 1.1 
+
+### Sample code:
 
 ```
 const string terrainTileUrl = "http://assets.agi.com/stk-terrain/v1/tilesets/world/tiles/0/0/0.terrain";
@@ -20,11 +33,11 @@ var bytes = gzipWebClient.GetByteArrayAsync(terrainTileUrl).Result;
 var stream = new MemoryStream(bytes);
 
 // act
-var qmt = QuantizedMeshTileParser.Parse(stream);
+var terrainTile = TerrainTileParser.Parse(stream);
 var triangles = terrainTile.GetTriangles(0, 0, 0);
 
 // assert
-Assert.IsTrue(qmt != null);
+Assert.IsTrue(terrainTile != null);
 Assert.IsTrue(triangles.Count == 400);
 Assert.IsTrue(triangles[0].Coordinate1.X == -180);
 Assert.IsTrue(triangles[0].Coordinate1.Y == -78.755149998474081);

@@ -4,17 +4,27 @@ namespace Terrain.Tile
 {
     public class GlobalGeodetic
     {
-        private const int tileSize = 256;
-        private const double resFact = 0.703125;  // equals to: 180/256
-        // todo: add support for resFact = 1.4062 // equals to 360/256
-
-        public static double[] GetTileBounds(int tx, int ty, int zoom)
+        public static double GetNumberOfTiles(int level)
         {
-            var res = resFact / Math.Pow(2, zoom);
-            var x0 = tx * tileSize * res - 180;
-            var y0 = ty * tileSize * res - 90;
-            var x1 = ((tx + 1) * tileSize * res) - 180;
-            var y1 = ((ty + 1) * tileSize * res) - 90;
+            return Math.Pow(2, level);
+        }
+
+        public static double TileToLon(int x, int level)
+        {
+            return x / GetNumberOfTiles(level) * 360 -180;
+        }
+
+        public static double TileToLat(int y,int level)
+        {
+            return y * 180 / GetNumberOfTiles(level)- 90;
+        }
+
+        public static double[] GetTileBounds(int tx, int ty, int level)
+        {
+            var x0 = TileToLon(tx,level);
+            var x1 = TileToLon((tx+1), level);
+            var y0 = TileToLat(ty, level);
+            var y1 = TileToLat((ty+1), level);
 
             return new double[4] { x0, y0, x1, y1 };
         }

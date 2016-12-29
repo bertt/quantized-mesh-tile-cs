@@ -68,5 +68,20 @@ namespace Terrain.Tile.Tests
             Assert.IsTrue(bounds[2] == 180);
             Assert.IsTrue(bounds[3] == 90);
         }
+
+        [Test]
+        public void GetTileBoundsTestsLevel2()
+        {
+            // act
+            var bounds = GlobalGeodetic.GetTileBounds(1, 2, 2);
+
+            // assert
+            Assert.IsTrue(bounds[0] == -90);
+            Assert.IsTrue(bounds[1] == 0);
+            Assert.IsTrue(bounds[2] == 0);
+            Assert.IsTrue(bounds[3] == 45);
+        }
+
     }
+
 }

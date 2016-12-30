@@ -38,7 +38,6 @@
   <ItemGroup>
     <Compile Include="ExtensionHeader.cs" />
     <Compile Include="FastBinaryReader.cs" />
-    <Compile Include="GlobalGeodetic.cs" />
     <Compile Include="IndexData.cs" />
     <Compile Include="Mathf.cs" />
     <Compile Include="NormalExtensionData.cs" />

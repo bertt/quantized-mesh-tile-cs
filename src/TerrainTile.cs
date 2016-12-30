@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Tiles;
 
 namespace Terrain.Tile
 {
@@ -13,7 +14,7 @@ namespace Terrain.Tile
 
         public List<Triangle> GetTriangles(int x, int y, int z)
         {
-            var bounds = GlobalGeodetic.GetTileBounds(x, y, z);
+            var bounds = Tilebelt.GetTileBounds(x, y, z);
             var triangles = new List<Triangle>();
 
             for (var i = 0; i < IndexData16.indices.Length; i += 3)

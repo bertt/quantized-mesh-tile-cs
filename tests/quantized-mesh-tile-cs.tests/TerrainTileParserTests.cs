@@ -4,7 +4,7 @@ using System.Net;
 using System.Net.Http;
 using System.Reflection;
 
-namespace Terrain.Tile.Tests
+namespace Terrain.Tiles.Tests
 {
     public class TerrainTileParserTests
     {
@@ -12,7 +12,7 @@ namespace Terrain.Tile.Tests
         public void TestFirstTileParsing()
         {
             // arrange
-            const string firstTerrainFile = "Terrain.Tile.Tests.data.9_533_383.terrain";
+            const string firstTerrainFile = "Terrain.Tiles.Tests.data.9_533_383.terrain";
 
             // act
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(firstTerrainFile);
@@ -67,7 +67,7 @@ namespace Terrain.Tile.Tests
         public void TestGetTriangles()
         {
             // arrange
-            const string firstTerrainFile = "Terrain.Tile.Tests.data.9_533_383.terrain";
+            const string firstTerrainFile = "Terrain.Tiles.Tests.data.9_533_383.terrain";
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(firstTerrainFile);
             var terrainTile = TerrainTileParser.Parse(pbfStream);
 
@@ -85,7 +85,7 @@ namespace Terrain.Tile.Tests
         public void TestWatermarkTileParsing()
         {
             // arrange
-            const string firstTerrainFile = "Terrain.Tile.Tests.data.9_769_319_watermask.terrain";
+            const string firstTerrainFile = "Terrain.Tiles.Tests.data.9_769_319_watermask.terrain";
 
             // act
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(firstTerrainFile);
@@ -104,7 +104,7 @@ namespace Terrain.Tile.Tests
         public void TestAnotherTileParsing()
         {
             // arrange
-            const string firstTerrainFile = "Terrain.Tile.Tests.data.10_1563_590_light_watermask.terrain";
+            const string firstTerrainFile = "Terrain.Tiles.Tests.data.10_1563_590_light_watermask.terrain";
 
             // act
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(firstTerrainFile);
@@ -154,7 +154,7 @@ namespace Terrain.Tile.Tests
         public void TestAnotherTileParsing1()
         {
             // arrange
-            const string firstTerrainFile = "Terrain.Tile.Tests.data.test_0_0_0.terrain";
+            const string firstTerrainFile = "Terrain.Tiles.Tests.data.test_0_0_0.terrain";
 
             // act
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(firstTerrainFile);

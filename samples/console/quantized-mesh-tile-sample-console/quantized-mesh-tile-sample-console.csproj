@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BEA67283-2FAA-4E9B-8A92-92C2DC92EC0B}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{F1EB781E-F806-4ED3-B7DA-126C278EDD64}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Terrain.Tiles.Tests</RootNamespace>
-    <AssemblyName>Terrain.Tiles.Tests</AssemblyName>
+    <RootNamespace>quantized_mesh_tile_sample_console</RootNamespace>
+    <AssemblyName>quantized-mesh-tile-sample-console</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -30,10 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NUnit.3.5.0\lib\net45\nunit.framework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,33 +41,25 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="tilebelt, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\tilebelt.0.1.6\lib\netstandard1.1\tilebelt.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LerpTests.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TerrainTileParserTests.cs" />
-    <Compile Include="TriangleTests.cs" />
-    <Compile Include="ZigZagTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="data\10_1563_590_light_watermask.terrain" />
-    <EmbeddedResource Include="data\9_533_383.terrain" />
-    <EmbeddedResource Include="data\9_769_319_watermask.terrain" />
     <None Include="App.config" />
-    <EmbeddedResource Include="data\ahn_416656.terrain" />
-    <EmbeddedResource Include="data\test_0_0_0.terrain" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\quantized-mesh-tile-cs.csproj">
+    <ProjectReference Include="..\..\..\src\quantized-mesh-tile-cs.csproj">
       <Project>{6ad5fb82-a205-4059-90a7-d8081a504640}</Project>
       <Name>quantized-mesh-tile-cs</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,4 +1,4 @@
-﻿namespace Terrain.Tile
+﻿namespace Terrain.Tiles
 {
     public static class Mathf
     {

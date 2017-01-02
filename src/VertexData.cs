@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Terrain.Tile
+namespace Terrain.Tiles
 {
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public unsafe struct VertexData

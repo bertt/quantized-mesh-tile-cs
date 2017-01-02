@@ -7,8 +7,8 @@
     <ProjectGuid>{6AD5FB82-A205-4059-90A7-D8081A504640}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Terrain.Tile</RootNamespace>
-    <AssemblyName>Terrain.Tile</AssemblyName>
+    <RootNamespace>Terrain.Tiles</RootNamespace>
+    <AssemblyName>Terrain.Tiles</AssemblyName>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>

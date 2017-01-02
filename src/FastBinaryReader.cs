@@ -2,7 +2,7 @@
 using System.IO;
 using System.Runtime.InteropServices;
 
-namespace Terrain.Tile
+namespace Terrain.Tiles
 {
     public unsafe class FastBinaryReader : IDisposable
     {

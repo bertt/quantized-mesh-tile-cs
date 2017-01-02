@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace Terrain.Tile
+namespace Terrain.Tiles
 {
     public class TerrainTileParser
     {

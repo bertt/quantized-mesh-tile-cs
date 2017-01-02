@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Tiles;
+using Tiles.Tools;
 
-namespace Terrain.Tile
+namespace Terrain.Tiles
 {
     public class TerrainTile
     {
@@ -14,7 +14,8 @@ namespace Terrain.Tile
 
         public List<Triangle> GetTriangles(int x, int y, int z)
         {
-            var bounds = Tilebelt.GetTileBounds(x, y, z);
+            var tile = new Tile(x, y, z);
+            var bounds = tile.Bounds();
             var triangles = new List<Triangle>();
 
             for (var i = 0; i < IndexData16.indices.Length; i += 3)

@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace Terrain.Tile.Tests
+namespace Terrain.Tiles.Tests
 {
     public class ZigZagTests
     {

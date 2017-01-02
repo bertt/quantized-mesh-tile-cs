@@ -10,18 +10,30 @@ More info about the quantized mesh format: https://github.com/AnalyticalGraphics
 
 For more awesome quantized mesh implementations see https://github.com/bertt/awesome-quantized-mesh-tiles
 
-Dependencies: Tilebelt (https://www.nuget.org/packages/tilebelt/)
-
-###Get it from NuGet 
+### Installation 
 `
 PM> Install-Package quantized-mesh-tile
+
 `
+
+### Dependents
+
+- 
+
+### Dependencies
+
+Dependencies: 
+
+Tilebelt (https://www.nuget.org/packages/tilebelt/)
+
+NETStandard.Library 1.6.1 https://www.nuget.org/packages/NETStandard.Library/
+
 
 https://www.nuget.org/packages/quantized-mesh-tile
 
 NuGet package contains library for .NET Standard 1.1 
 
-### Sample code:
+### Usage
 
 ```
 const string terrainTileUrl = "http://assets.agi.com/stk-terrain/v1/tilesets/world/tiles/0/0/0.terrain";

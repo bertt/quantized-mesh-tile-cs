@@ -10,7 +10,8 @@ More info about the quantized mesh format: https://github.com/AnalyticalGraphics
 
 For more awesome quantized mesh implementations see https://github.com/bertt/awesome-quantized-mesh-tiles
 
-### Installation 
+### Installation
+
 `
 PM> Install-Package quantized-mesh-tile
 
@@ -21,8 +22,6 @@ PM> Install-Package quantized-mesh-tile
 - 
 
 ### Dependencies
-
-Dependencies: 
 
 Tilebelt (https://www.nuget.org/packages/tilebelt/)
 
@@ -54,15 +53,15 @@ var triangles = terrainTile.GetTriangles(0, 0, 0);
 Assert.IsTrue(terrainTile != null);
 Assert.IsTrue(triangles.Count == 400);
 Assert.IsTrue(triangles[0].Coordinate1.X == -180);
-Assert.IsTrue(triangles[0].Coordinate1.Y == -78.755149998474081);
+Assert.IsTrue(triangles[0].Coordinate1.Y == -74.42460449548);
 Assert.IsTrue(triangles[0].Coordinate1.Height == -55.24706495350631);
 
 Assert.IsTrue(triangles[0].Coordinate2.X == -180);
-Assert.IsTrue(triangles[0].Coordinate2.Y == -90);
+Assert.IsTrue(triangles[0].Coordinate2.Y == -85.051128779806589);
 Assert.IsTrue(triangles[0].Coordinate2.Height == -29.85938702932947);
 
-Assert.IsTrue(triangles[0].Coordinate3.X == -168.75514999847408);
-Assert.IsTrue(triangles[0].Coordinate3.Y == -81.56773583178199);
+Assert.IsTrue(triangles[0].Coordinate3.X == -157.51029999694816);
+Assert.IsTrue(triangles[0].Coordinate3.Y == -77.082533383401483);
 Assert.IsTrue(triangles[0].Coordinate3.Height == -50.34768851199851);
 ```
 ![wireframe](https://cesiumjs.org/images/2015/12-18/terrain-obb-wireframe.png)

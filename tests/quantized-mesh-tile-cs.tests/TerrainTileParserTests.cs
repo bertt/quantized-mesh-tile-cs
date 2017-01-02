@@ -78,7 +78,8 @@ namespace Terrain.Tiles.Tests
             Assert.IsTrue(triangles.Count == 127);
             Assert.IsTrue(triangles[0].Coordinate1.Height == 215.97891519320481);
             Assert.IsTrue(triangles[0].Coordinate1.X == 195.21785924100468);
-            Assert.IsTrue(triangles[0].Coordinate1.Y == 44.93473449850459);
+            Assert.IsTrue(triangles[0].Coordinate1.Y == -66.28377253441262);
+            // WAS: Assert.IsTrue(triangles[0].Coordinate1.Y == 44.93473449850459);
         }
 
         [Test]
@@ -138,15 +139,16 @@ namespace Terrain.Tiles.Tests
 
             // check: coordinates are CCW order
             Assert.IsTrue(triangles[0].Coordinate1.X == -180);
-            Assert.IsTrue(triangles[0].Coordinate1.Y == -78.755149998474081);
+            Assert.IsTrue(triangles[0].Coordinate1.Y == -74.424604495480025);
+            // WAS: Assert.IsTrue(triangles[0].Coordinate1.Y == -78.755149998474081);
             Assert.IsTrue(triangles[0].Coordinate1.Height == -55.24706495350631);
 
             Assert.IsTrue(triangles[0].Coordinate2.X == -180);
-            Assert.IsTrue(triangles[0].Coordinate2.Y == -90);
+            Assert.IsTrue(triangles[0].Coordinate2.Y == -85.051128779806589);
             Assert.IsTrue(triangles[0].Coordinate2.Height == -29.85938702932947);
 
             Assert.IsTrue(triangles[0].Coordinate3.X == -157.51029999694816);
-            Assert.IsTrue(triangles[0].Coordinate3.Y == -81.56773583178199);
+            Assert.IsTrue(triangles[0].Coordinate3.Y == -77.082533383401483);
             Assert.IsTrue(triangles[0].Coordinate3.Height == -50.34768851199851);
         }
 

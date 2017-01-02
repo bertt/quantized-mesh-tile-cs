@@ -12,10 +12,9 @@ For more awesome quantized mesh implementations see https://github.com/bertt/awe
 
 ### Installation
 
-`
+```
 PM> Install-Package quantized-mesh-tile
-
-`
+```
 
 ### Dependents
 
@@ -26,11 +25,6 @@ PM> Install-Package quantized-mesh-tile
 Tilebelt (https://www.nuget.org/packages/tilebelt/)
 
 NETStandard.Library 1.6.1 https://www.nuget.org/packages/NETStandard.Library/
-
-
-https://www.nuget.org/packages/quantized-mesh-tile
-
-NuGet package contains library for .NET Standard 1.1 
 
 ### Usage
 

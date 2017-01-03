@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{5512
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quantized-mesh-tile-sample-console", "samples\console\quantized-mesh-tile-sample-console\quantized-mesh-tile-sample-console.csproj", "{F1EB781E-F806-4ED3-B7DA-126C278EDD64}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quantized-mesh-tile-cs.benchmark", "quantized-mesh-tile-cs.benchmark\quantized-mesh-tile-cs.benchmark.csproj", "{C078EB8C-1751-4DC0-801B-7C681608C78C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{F1EB781E-F806-4ED3-B7DA-126C278EDD64}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1EB781E-F806-4ED3-B7DA-126C278EDD64}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1EB781E-F806-4ED3-B7DA-126C278EDD64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C078EB8C-1751-4DC0-801B-7C681608C78C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C078EB8C-1751-4DC0-801B-7C681608C78C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C078EB8C-1751-4DC0-801B-7C681608C78C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C078EB8C-1751-4DC0-801B-7C681608C78C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

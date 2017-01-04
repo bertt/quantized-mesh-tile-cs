@@ -5,13 +5,18 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quantized-mesh-tile-cs", "src\quantized-mesh-tile-cs.csproj", "{6AD5FB82-A205-4059-90A7-D8081A504640}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quantized-mesh-tile-cs.tests", "tests\quantized-mesh-tile-cs.tests\quantized-mesh-tile-cs.tests.csproj", "{BEA67283-2FAA-4E9B-8A92-92C2DC92EC0B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quantized-mesh-tile-cs.tests", "tests\quantized-mesh-tile-cs.tests.csproj", "{BEA67283-2FAA-4E9B-8A92-92C2DC92EC0B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{55126FC5-D025-4ED4-A5FE-32CB6E2C2A11}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quantized-mesh-tile-sample-console", "samples\console\quantized-mesh-tile-sample-console\quantized-mesh-tile-sample-console.csproj", "{F1EB781E-F806-4ED3-B7DA-126C278EDD64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quantized-mesh-tile-cs.benchmark", "quantized-mesh-tile-cs.benchmark\quantized-mesh-tile-cs.benchmark.csproj", "{C078EB8C-1751-4DC0-801B-7C681608C78C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quantized-mesh-tile-cs.benchmark", "benchmarks\quantized-mesh-tile-cs.benchmark.csproj", "{C078EB8C-1751-4DC0-801B-7C681608C78C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0172BCA7-5D94-4868-BB7D-8284A36E5738}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -78,8 +78,7 @@ namespace Terrain.Tiles.Tests
             Assert.IsTrue(triangles.Count == 127);
             Assert.IsTrue(triangles[0].Coordinate1.Height == 215.97891519320481);
             Assert.IsTrue(triangles[0].Coordinate1.X == 195.21785924100468);
-            Assert.IsTrue(triangles[0].Coordinate1.Y == -66.28377253441262);
-            // WAS: Assert.IsTrue(triangles[0].Coordinate1.Y == 44.93473449850459);
+            Assert.IsTrue(triangles[0].Coordinate1.Y == 66.460945387324969);
         }
 
         [Test]
@@ -151,6 +150,34 @@ namespace Terrain.Tiles.Tests
             Assert.IsTrue(triangles[0].Coordinate3.Y == -77.082533383401483);
             Assert.IsTrue(triangles[0].Coordinate3.Height == -50.34768851199851);
         }
+
+        [Test]
+        public void TestTerrainTileFromWebLevel1Parsing()
+        {
+            // arrange
+            const string terrainTileUrl = "http://assets.agi.com/stk-terrain/v1/tilesets/world/tiles/1/0/0.terrain";
+
+            var gzipWebClient = new HttpClient(new HttpClientHandler()
+            {
+                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
+            });
+            var bytes = gzipWebClient.GetByteArrayAsync(terrainTileUrl).Result;
+            var stream = new MemoryStream(bytes);
+
+            // act
+            var terrainTile = TerrainTileParser.Parse(stream);
+            var triangles = terrainTile.GetTriangles(0, 0, 1);
+
+            // assert
+            Assert.IsTrue(terrainTile != null);
+            Assert.IsTrue(triangles.Count == 233);
+
+            // check: coordinates are CCW order
+            Assert.IsTrue(triangles[0].Coordinate1.X == -135.00411999877926);
+            Assert.IsTrue(triangles[0].Coordinate1.Y == -81.513280074497089);
+            Assert.IsTrue(triangles[0].Coordinate1.Height == 3741.9710127209728);
+        }
+
 
         [Test]
         public void TestAnotherTileParsing1()

@@ -16,6 +16,8 @@ namespace Terrain.Tiles
         {
             var tile = new Tile(x, y, z);
             var bounds = tile.Bounds();
+            // make it according to tms
+            bounds = new double[] { bounds[0], -bounds[3], bounds[2], -bounds[1] };
             var triangles = new List<Triangle>();
 
             for (var i = 0; i < IndexData16.indices.Length; i += 3)

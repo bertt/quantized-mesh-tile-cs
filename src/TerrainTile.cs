@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Tiles.Tools;
 
 namespace Terrain.Tiles
@@ -12,12 +13,9 @@ namespace Terrain.Tiles
         // public NormalExtensionData NormalExtensionData { get; set; }
         private const int MAX = 32767;
 
-        public List<Triangle> GetTriangles(int x, int y, int z)
+
+        public List<Triangle> GetTriangles(double[] bounds)
         {
-            var tile = new Tile(x, y, z);
-            var bounds = tile.Bounds();
-            // make it according to tms
-            bounds = new double[] { bounds[0], -bounds[3], bounds[2], -bounds[1] };
             var triangles = new List<Triangle>();
 
             for (var i = 0; i < IndexData16.indices.Length; i += 3)
@@ -31,8 +29,17 @@ namespace Terrain.Tiles
                 var c3 = GetCoordinate(thirdIndex, bounds);
                 triangles.Add(new Triangle(c1, c2, c3));
             }
-
             return triangles;
+        }
+
+        [Obsolete("Method GetTriangles(x,y,z) is obsolete, try using GetTraingles(bounds) instead")]
+        public List<Triangle> GetTriangles(int x, int y, int z)
+        {
+            var tile = new Tile(x, y, z);
+            var bounds = tile.Bounds();
+
+            bounds = new double[] { bounds[0], -bounds[3], bounds[2], -bounds[1] };
+            return GetTriangles(bounds);
         }
 
         private Coordinate GetCoordinate(ushort index, double[] bounds)

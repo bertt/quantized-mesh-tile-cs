@@ -77,8 +77,8 @@ namespace Terrain.Tiles.Tests
             // assert
             Assert.IsTrue(triangles.Count == 127);
             Assert.IsTrue(triangles[0].Coordinate1.Height == 215.97891519320481);
-            Assert.IsTrue(triangles[0].Coordinate1.X == 195.21785924100468);
-            Assert.IsTrue(triangles[0].Coordinate1.Y == 66.460945387324969);
+            Assert.IsTrue(triangles[0].Coordinate1.X == 7.6089296205023347);
+            Assert.IsTrue(triangles[0].Coordinate1.Y == 44.934734498504589);
         }
 
         [Test]
@@ -138,16 +138,16 @@ namespace Terrain.Tiles.Tests
 
             // check: coordinates are CCW order
             Assert.IsTrue(triangles[0].Coordinate1.X == -180);
-            Assert.IsTrue(triangles[0].Coordinate1.Y == -74.424604495480025);
+            Assert.IsTrue(triangles[0].Coordinate1.Y == -78.755149998474081);
             // WAS: Assert.IsTrue(triangles[0].Coordinate1.Y == -78.755149998474081);
             Assert.IsTrue(triangles[0].Coordinate1.Height == -55.24706495350631);
 
             Assert.IsTrue(triangles[0].Coordinate2.X == -180);
-            Assert.IsTrue(triangles[0].Coordinate2.Y == -85.051128779806589);
+            Assert.IsTrue(triangles[0].Coordinate2.Y == -90);
             Assert.IsTrue(triangles[0].Coordinate2.Height == -29.85938702932947);
 
-            Assert.IsTrue(triangles[0].Coordinate3.X == -157.51029999694816);
-            Assert.IsTrue(triangles[0].Coordinate3.Y == -77.082533383401483);
+            Assert.IsTrue(triangles[0].Coordinate3.X == -168.75514999847408);
+            Assert.IsTrue(triangles[0].Coordinate3.Y == -81.567735831781988);
             Assert.IsTrue(triangles[0].Coordinate3.Height == -50.34768851199851);
         }
 
@@ -173,8 +173,8 @@ namespace Terrain.Tiles.Tests
             Assert.IsTrue(triangles.Count == 233);
 
             // check: coordinates are CCW order
-            Assert.IsTrue(triangles[0].Coordinate1.X == -135.00411999877926);
-            Assert.IsTrue(triangles[0].Coordinate1.Y == -81.513280074497089);
+            Assert.IsTrue(triangles[0].Coordinate1.X == -157.50205999938964);
+            Assert.IsTrue(triangles[0].Coordinate1.Y == -86.256294442579417);
             Assert.IsTrue(triangles[0].Coordinate1.Height == 3741.9710127209728);
         }
 

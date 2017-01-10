@@ -18,10 +18,10 @@ namespace Terrain.Tiles
             var tileRange = new TileRange(x, y);
             var extent = TileTransform.TileToWorld(tileRange, z.ToString(), schema);
             var bounds = new double[] { extent.MinX, extent.MinY, extent.MaxX, extent.MaxY };
-            return GetTriangles(bounds);
+            return GetTriangles(bounds, z);
         }
 
-        private List<Triangle> GetTriangles(double[] bounds)
+        private List<Triangle> GetTriangles(double[] bounds, int level)
         {
             var triangles = new List<Triangle>();
 
@@ -34,7 +34,7 @@ namespace Terrain.Tiles
                 var c1 = GetCoordinate(firstIndex, bounds);
                 var c2 = GetCoordinate(secondIndex, bounds);
                 var c3 = GetCoordinate(thirdIndex, bounds);
-                triangles.Add(new Triangle(c1, c2, c3));
+                triangles.Add(new Triangle(c1, c2, c3) { Level = level });
             }
             return triangles;
         }

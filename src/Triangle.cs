@@ -13,5 +13,7 @@
         public Coordinate Coordinate2 { get; set; }
         public Coordinate Coordinate3 { get; set; }
         public int Level { get; set; }
+        public int Col { get; set; }
+        public int Row { get; set; }
     }
 }

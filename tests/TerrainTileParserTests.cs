@@ -9,6 +9,21 @@ namespace Terrain.Tiles.Tests
     public class TerrainTileParserTests
     {
         [Test]
+        public void TestTomTileParsing()
+        {
+            // arrange
+            const string firstTerrainFile = "Terrain.Tiles.Tests.data.26068.terrain";
+
+            // act
+            var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(firstTerrainFile);
+            var terrainTile = TerrainTileParser.Parse(pbfStream);
+
+            // assert
+            Assert.IsTrue(terrainTile != null);
+            Assert.IsTrue(terrainTile.GetTriangles(33823,26068,15).Count> 0);
+        }
+
+        [Test]
         public void TestFirstTileParsing()
         {
             // arrange
@@ -115,17 +130,24 @@ namespace Terrain.Tiles.Tests
             // todo: check extensions
         }
 
-        [Test]
-        public void TestTerrainTileFromWebParsing()
+        private HttpClient GetCesiumWebClient()
         {
-            // arrange
-            const string terrainTileUrl = "http://assets.agi.com/stk-terrain/v1/tilesets/world/tiles/0/0/0.terrain";
-
-            var gzipWebClient = new HttpClient(new HttpClientHandler()
+            var cesiumWebClient = new HttpClient(new HttpClientHandler()
             {
                 AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
             });
-            var bytes = gzipWebClient.GetByteArrayAsync(terrainTileUrl).Result;
+            cesiumWebClient.DefaultRequestHeaders.Add("accept", "application/vnd.quantized-mesh,application/octet-stream;q=0.9,*/*;q=0.01,*/*;access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkNDhkYmU1My04ZGQxLTQzNDgtOWUzOC05NmM0ZmY3NjU4ODEiLCJpZCI6MjU5LCJhc3NldHMiOnsiMSI6eyJ0eXBlIjoiVEVSUkFJTiIsImV4dGVuc2lvbnMiOlt0cnVlLHRydWUsdHJ1ZV19fSwic3JjIjoiNzkzNTg3YTEtYTk5Yi00ZGQ2LWJiODctMGJjNDMyNmQ1ODUwIiwiaWF0IjoxNTQxNTc4OTMxLCJleHAiOjE1NDE1ODI1MzF9.zZuQxTqsnyOPG_Mzr3-ZBEN7gHEELhvB3FhmzraL6Pg");
+            return cesiumWebClient;
+        }
+
+        [Test]
+        public void TestCesiumTerrainTileParsing()
+        {
+            // arrange
+            const string terrainTileUrl = "https://assets.cesium.com/1/0/0/0.terrain?v=1.1.0";
+
+            var cesiumClient = GetCesiumWebClient();
+            var bytes = cesiumClient.GetByteArrayAsync(terrainTileUrl).Result;
             var stream = new MemoryStream(bytes);
 
             // act
@@ -134,48 +156,7 @@ namespace Terrain.Tiles.Tests
 
             // assert
             Assert.IsTrue(terrainTile != null);
-            Assert.IsTrue(triangles.Count == 400);
-
-            // check: coordinates are CCW order
-            Assert.IsTrue(triangles[0].Coordinate1.X == -180);
-            Assert.IsTrue(triangles[0].Coordinate1.Y == -78.755149998474081);
-            // WAS: Assert.IsTrue(triangles[0].Coordinate1.Y == -78.755149998474081);
-            Assert.IsTrue(triangles[0].Coordinate1.Height == -55.24706495350631);
-
-            Assert.IsTrue(triangles[0].Coordinate2.X == -180);
-            Assert.IsTrue(triangles[0].Coordinate2.Y == -90);
-            Assert.IsTrue(triangles[0].Coordinate2.Height == -29.85938702932947);
-
-            Assert.IsTrue(triangles[0].Coordinate3.X == -168.75514999847408);
-            Assert.IsTrue(triangles[0].Coordinate3.Y == -81.567735831781988);
-            Assert.IsTrue(triangles[0].Coordinate3.Height == -50.34768851199851);
-        }
-
-        [Test]
-        public void TestTerrainTileFromWebLevel1Parsing()
-        {
-            // arrange
-            const string terrainTileUrl = "http://assets.agi.com/stk-terrain/v1/tilesets/world/tiles/1/0/0.terrain";
-
-            var gzipWebClient = new HttpClient(new HttpClientHandler()
-            {
-                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
-            });
-            var bytes = gzipWebClient.GetByteArrayAsync(terrainTileUrl).Result;
-            var stream = new MemoryStream(bytes);
-
-            // act
-            var terrainTile = TerrainTileParser.Parse(stream);
-            var triangles = terrainTile.GetTriangles(0, 0, 1);
-
-            // assert
-            Assert.IsTrue(terrainTile != null);
-            Assert.IsTrue(triangles.Count == 233);
-
-            // check: coordinates are CCW order
-            Assert.IsTrue(triangles[0].Coordinate1.X == -157.50205999938964);
-            Assert.IsTrue(triangles[0].Coordinate1.Y == -86.256294442579417);
-            Assert.IsTrue(triangles[0].Coordinate1.Height == 3741.9710127209728);
+            Assert.IsTrue(triangles.Count == 412);
         }
 
 

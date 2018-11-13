@@ -136,7 +136,7 @@ namespace Terrain.Tiles.Tests
             {
                 AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
             });
-            var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkNTRhYTA3Mi0zMmYwLTQzNWEtYjk3OC1hN2U1Nzc5MzM2ZDAiLCJpZCI6NDc4OSwiYXNzZXRzIjp7IjEiOnsidHlwZSI6IlRFUlJBSU4iLCJleHRlbnNpb25zIjpbdHJ1ZSx0cnVlLHRydWVdfX0sInNyYyI6IjI3MjZmNTYxLWEwM2UtNDFhZC04NGZmLTA2NDBkOTRkYWJmMiIsImlhdCI6MTU0MTYyNjc5NiwiZXhwIjoxNTQxNjMwMzk2fQ.jTRuZld9Y3vng3XrX1r8TZ3REwAfHI7AI0MgBAAj2ko";
+            var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3OTk2ODFjOS1lY2ZjLTRjNGEtYjFlYi0wMTYwMjZiYTZmMDYiLCJpZCI6NDc4OSwiYXNzZXRzIjp7IjEiOnsidHlwZSI6IlRFUlJBSU4iLCJleHRlbnNpb25zIjpbdHJ1ZSx0cnVlLHRydWVdfX0sInNyYyI6IjI3MjZmNTYxLWEwM2UtNDFhZC04NGZmLTA2NDBkOTRkYWJmMiIsImlhdCI6MTU0MjA5ODc5NCwiZXhwIjoxNTQyMTAyMzk0fQ.43QlB4y9xuC3I31fMsaVFYVyNG2bsd1Kp39EojAACQU";
             cesiumWebClient.DefaultRequestHeaders.Add("accept", $"application/vnd.quantized-mesh,application/octet-stream;q=0.9,*/*;q=0.01,*/*;access_token={token}");
             return cesiumWebClient;
         }

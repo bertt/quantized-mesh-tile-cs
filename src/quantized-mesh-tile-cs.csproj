@@ -5,9 +5,15 @@
     <RootNamespace>Terrain.Tiles</RootNamespace>
     <Description>.NET library for decoding Quantized Mesh tiles</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AssemblyName>Terrain.Tiles</AssemblyName>
+    <Version>0.2.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 

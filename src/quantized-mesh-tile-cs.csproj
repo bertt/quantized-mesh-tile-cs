@@ -39,7 +39,6 @@
     <Compile Include="ExtensionHeader.cs" />
     <Compile Include="FastBinaryReader.cs" />
     <Compile Include="IndexData.cs" />
-    <Compile Include="Mathf.cs" />
     <Compile Include="NormalExtensionData.cs" />
     <Compile Include="Coordinate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -14,10 +14,13 @@ For more awesome quantized mesh implementations see https://github.com/bertt/awe
 PM> Install-Package quantized-mesh-tile
 ```
 
-
 ### Dependencies
 
-NETStandard.Library 2.0.3 https://www.nuget.org/packages/NETStandard.Library/
+NETStandard.Library 1.6 https://www.nuget.org/packages/NETStandard.Library/
+
+### History
+
+18-12-05: release version 0.2 with new .NET project file and conversion to WGS84 (method GetTriangles) removed.
 
 ### Usage
 

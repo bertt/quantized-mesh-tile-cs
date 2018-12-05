@@ -21,6 +21,7 @@ namespace Terrain.Tiles.Tests
 
             // assert
             Assert.IsTrue(terrainTile.VertexData.vertexCount>0);
+
         }
 
         [Test]

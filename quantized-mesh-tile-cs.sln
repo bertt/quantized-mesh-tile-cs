@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.106
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quantized-mesh-tile-cs", "src\quantized-mesh-tile-cs.csproj", "{6AD5FB82-A205-4059-90A7-D8081A504640}"
 EndProject
@@ -46,5 +46,8 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F1EB781E-F806-4ED3-B7DA-126C278EDD64} = {55126FC5-D025-4ED4-A5FE-32CB6E2C2A11}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E889B7AE-90A8-4FA9-A5EF-1B64E7F449AE}
 	EndGlobalSection
 EndGlobal

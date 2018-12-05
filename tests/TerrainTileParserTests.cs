@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework;
 using System.IO;
-using System.Net;
 using System.Net.Http;
 using System.Reflection;
 
@@ -21,8 +20,7 @@ namespace Terrain.Tiles.Tests
             var terrainTile = TerrainTileParser.Parse(stream);
 
             // assert
-            Assert.IsTrue(terrainTile.GetTriangles(33823,2608,15).Count>0);
-
+            Assert.IsTrue(terrainTile.VertexData.vertexCount>0);
         }
 
         [Test]
@@ -37,7 +35,7 @@ namespace Terrain.Tiles.Tests
 
             // assert
             Assert.IsTrue(terrainTile != null);
-            Assert.IsTrue(terrainTile.GetTriangles(33823,26068,15).Count> 0);
+            Assert.IsTrue(terrainTile.VertexData.vertexCount> 0);
         }
 
         [Test]
@@ -96,24 +94,6 @@ namespace Terrain.Tiles.Tests
         }
 
         [Test]
-        public void TestGetTriangles()
-        {
-            // arrange
-            const string firstTerrainFile = "Terrain.Tiles.Tests.data.9_533_383.terrain";
-            var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(firstTerrainFile);
-            var terrainTile = TerrainTileParser.Parse(pbfStream);
-
-            // act
-            var triangles = terrainTile.GetTriangles(533, 383, 9);
-
-            // assert
-            Assert.IsTrue(triangles.Count == 127);
-            Assert.IsTrue(triangles[0].Coordinate1.Height == 215.97891519320481);
-            Assert.IsTrue(triangles[0].Coordinate1.X == 7.6089296205023347);
-            Assert.IsTrue(triangles[0].Coordinate1.Y == 44.934734498504589);
-        }
-
-        [Test]
         public void TestWatermarkTileParsing()
         {
             // arrange
@@ -159,11 +139,10 @@ namespace Terrain.Tiles.Tests
 
             // act
             var terrainTile = TerrainTileParser.Parse(stream);
-            var triangles = terrainTile.GetTriangles(536, 391, 9);
 
             // assert
             Assert.IsTrue(terrainTile != null);
-            Assert.IsTrue(triangles.Count == 189);
+            Assert.IsTrue(terrainTile.VertexData.vertexCount > 0);
         }
 
 

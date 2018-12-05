@@ -36,13 +36,6 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="brutile\ITileSchema.cs" />
-    <Compile Include="brutile\Resolution.cs" />
-    <Compile Include="brutile\Extent.cs" />
-    <Compile Include="brutile\TileRange.cs" />
-    <Compile Include="brutile\TileSchema.cs" />
-    <Compile Include="brutile\TileTransform.cs" />
-    <Compile Include="brutile\YAxis.cs" />
     <Compile Include="ExtensionHeader.cs" />
     <Compile Include="FastBinaryReader.cs" />
     <Compile Include="IndexData.cs" />
@@ -53,8 +46,6 @@
     <Compile Include="TerrainTileHeader.cs" />
     <Compile Include="TerrainTile.cs" />
     <Compile Include="TerrainTileParser.cs" />
-    <Compile Include="brutile\TmsTileSchema.cs" />
-    <Compile Include="Triangle.cs" />
     <Compile Include="VertexData.cs" />
     <Compile Include="ZigZag.cs" />
   </ItemGroup>

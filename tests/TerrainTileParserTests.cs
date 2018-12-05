@@ -9,10 +9,27 @@ namespace Terrain.Tiles.Tests
     public class TerrainTileParserTests
     {
         [Test]
+        public void GetTomTileFromWeb()
+        {
+            // arrange
+            var url = "https://saturnus.geodan.nl/tomt/data/tiles/15/33823/26068.terrain?v=1.0.0";
+            var client = new HttpClient();
+            var bytes = client.GetByteArrayAsync(url).Result;
+            var stream = new MemoryStream(bytes);
+
+            // act
+            var terrainTile = TerrainTileParser.Parse(stream);
+
+            // assert
+            Assert.IsTrue(terrainTile.GetTriangles(33823,2608,15).Count>0);
+
+        }
+
+        [Test]
         public void TestTomTileParsing()
         {
             // arrange
-            const string firstTerrainFile = "Terrain.Tiles.Tests.data.26068.terrain";
+            const string firstTerrainFile = "Terrain.Tiles.Tests.data.86.terrain";
 
             // act
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(firstTerrainFile);
@@ -130,34 +147,23 @@ namespace Terrain.Tiles.Tests
             // todo: check extensions
         }
 
-        private HttpClient GetCesiumWebClient()
-        {
-            var cesiumWebClient = new HttpClient(new HttpClientHandler()
-            {
-                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
-            });
-            var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3OTk2ODFjOS1lY2ZjLTRjNGEtYjFlYi0wMTYwMjZiYTZmMDYiLCJpZCI6NDc4OSwiYXNzZXRzIjp7IjEiOnsidHlwZSI6IlRFUlJBSU4iLCJleHRlbnNpb25zIjpbdHJ1ZSx0cnVlLHRydWVdfX0sInNyYyI6IjI3MjZmNTYxLWEwM2UtNDFhZC04NGZmLTA2NDBkOTRkYWJmMiIsImlhdCI6MTU0MjA5ODc5NCwiZXhwIjoxNTQyMTAyMzk0fQ.43QlB4y9xuC3I31fMsaVFYVyNG2bsd1Kp39EojAACQU";
-            cesiumWebClient.DefaultRequestHeaders.Add("accept", $"application/vnd.quantized-mesh,application/octet-stream;q=0.9,*/*;q=0.01,*/*;access_token={token}");
-            return cesiumWebClient;
-        }
-
         [Test]
         public void TestCesiumTerrainTileParsing()
         {
             // arrange
-            const string terrainTileUrl = "https://assets.cesium.com/1/0/0/0.terrain?v=1.1.0";
+            const string terrainTileUrl = "https://maps.tilehosting.com/data/terrain-quantized-mesh/9/536/391.terrain?key=wYrAjVu6bV6ycoXliAPl";
 
-            var cesiumClient = GetCesiumWebClient();
-            var bytes = cesiumClient.GetByteArrayAsync(terrainTileUrl).Result;
+            var client = new HttpClient();
+            var bytes = client.GetByteArrayAsync(terrainTileUrl).Result;
             var stream = new MemoryStream(bytes);
 
             // act
             var terrainTile = TerrainTileParser.Parse(stream);
-            var triangles = terrainTile.GetTriangles(0, 0, 0);
+            var triangles = terrainTile.GetTriangles(536, 391, 9);
 
             // assert
             Assert.IsTrue(terrainTile != null);
-            Assert.IsTrue(triangles.Count == 412);
+            Assert.IsTrue(triangles.Count == 189);
         }
 
 

@@ -10,7 +10,7 @@ namespace Terrain.Tiles.Tests
         {
             // arrange
             var level = 0;
-            var col = 0;
+            var col = 1;
             var row = 0;
             var schema = new TmsTileSchema();
 
@@ -20,8 +20,8 @@ namespace Terrain.Tiles.Tests
             var extent = TileTransform.TileToWorld(tileRange, level.ToString(), schema);
 
             // assert
-            Assert.IsTrue(extent.MinX == -180);
-            Assert.IsTrue(extent.MaxX == 0);
+            Assert.IsTrue(extent.MinX == 0);
+            Assert.IsTrue(extent.MaxX == 180);
             Assert.IsTrue(extent.MinY == -90);
             Assert.IsTrue(extent.MaxY == 90);
         }

@@ -22,40 +22,27 @@ PM> Install-Package quantized-mesh-tile
 
 ### Dependencies
 
-Tilebelt (https://www.nuget.org/packages/tilebelt/)
-
 NETStandard.Library 1.6.1 https://www.nuget.org/packages/NETStandard.Library/
 
 ### Usage
 
 ```
-const string terrainTileUrl = "http://assets.agi.com/stk-terrain/v1/tilesets/world/tiles/0/0/0.terrain";
+const string terrainTileUrl = @"https://maps.tilehosting.com/data/terrain-quantized-mesh/9/536/391.terrain?key=wYrAjVu6bV6ycoXliAPl";
 
-var gzipWebClient = new HttpClient(new HttpClientHandler()
-{
-    AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
-});
-var bytes = gzipWebClient.GetByteArrayAsync(terrainTileUrl).Result;
-
+var client = new HttpClient();
+var bytes = client.GetByteArrayAsync(terrainTileUrl).Result;
 var stream = new MemoryStream(bytes);
 
-// act
 var terrainTile = TerrainTileParser.Parse(stream);
-var triangles = terrainTile.GetTriangles(0, 0, 0);
+var triangles = terrainTile.GetTriangles(536, 391, 9);
 
-// assert
-Assert.IsTrue(terrainTile != null);
-Assert.IsTrue(triangles.Count == 400);
-Assert.IsTrue(triangles[0].Coordinate1.X == -180);
-Assert.IsTrue(triangles[0].Coordinate1.Y == -74.42460449548);
-Assert.IsTrue(triangles[0].Coordinate1.Height == -55.24706495350631);
+var count = triangles.Count;
+var first_x = triangles[0].Coordinate1.X;
+var first_y = triangles[0].Coordinate1.Y;
+var first_z = triangles[0].Coordinate1.Height;
 
-Assert.IsTrue(triangles[0].Coordinate2.X == -180);
-Assert.IsTrue(triangles[0].Coordinate2.Y == -85.051128779806589);
-Assert.IsTrue(triangles[0].Coordinate2.Height == -29.85938702932947);
-
-Assert.IsTrue(triangles[0].Coordinate3.X == -157.51029999694816);
-Assert.IsTrue(triangles[0].Coordinate3.Y == -77.082533383401483);
-Assert.IsTrue(triangles[0].Coordinate3.Height == -50.34768851199851);
+Console.WriteLine($"Number of triangles: {count}");
+Console.WriteLine($"Coordinates first triangle, first vertice: {first_x}, {first_y}, {first_z}");
+Console.ReadLine();
 ```
 ![wireframe](https://cesiumjs.org/images/2015/12-18/terrain-obb-wireframe.png)

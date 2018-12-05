@@ -2,7 +2,7 @@
 
 [![NuGet Status](http://img.shields.io/nuget/v/quantized-mesh-tile.svg?style=flat)](https://www.nuget.org/packages/quantized-mesh-tile/)
 
-A .NET library for decoding a terrain tile (format quantized mesh).
+A .NET library (netstandard1.1) for decoding a terrain tile (format quantized mesh).
 
 More info about the quantized mesh format: https://github.com/AnalyticalGraphicsInc/quantized-mesh
 
@@ -14,13 +14,10 @@ For more awesome quantized mesh implementations see https://github.com/bertt/awe
 PM> Install-Package quantized-mesh-tile
 ```
 
-### Dependents
-
-- 
 
 ### Dependencies
 
-NETStandard.Library 1.6.1 https://www.nuget.org/packages/NETStandard.Library/
+NETStandard.Library 2.0.3 https://www.nuget.org/packages/NETStandard.Library/
 
 ### Usage
 

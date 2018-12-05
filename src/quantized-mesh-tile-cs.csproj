@@ -7,6 +7,9 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <AssemblyName>Terrain.Tiles</AssemblyName>
     <Version>0.2.0</Version>
+    <PackageId>quantized-mesh-tile</PackageId>
+    <Authors>Bert Temme</Authors>
+    <Company>Geodan</Company>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

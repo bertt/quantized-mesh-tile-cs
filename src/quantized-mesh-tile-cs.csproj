@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.1</TargetFramework>
-    <RootNamespace>quantized_mesh_tile_cs</RootNamespace>
+    <RootNamespace>Terrain.Tiles</RootNamespace>
     <Description>.NET library for decoding Quantized Mesh tiles</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>

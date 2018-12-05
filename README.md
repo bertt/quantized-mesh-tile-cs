@@ -22,8 +22,6 @@ PM> Install-Package quantized-mesh-tile
 
 ### Dependencies
 
-Tilebelt (https://www.nuget.org/packages/tilebelt/)
-
 NETStandard.Library 1.6.1 https://www.nuget.org/packages/NETStandard.Library/
 
 ### Usage

@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("quantized-mesh-tile-cs")]
-[assembly: AssemblyDescription(".NET library for decoding Cesium Quantzied Mesh tiles")]
+[assembly: AssemblyDescription(".NET library for decoding Quantized Mesh tiles")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("quantized-mesh-tile-cs")]

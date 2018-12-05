@@ -2,7 +2,7 @@
 
 [![NuGet Status](http://img.shields.io/nuget/v/quantized-mesh-tile.svg?style=flat)](https://www.nuget.org/packages/quantized-mesh-tile/)
 
-A .NET library for decoding a Cesium terrain tile (format quantized mesh) into a collection of triangles.
+A .NET library for decoding a terrain tile (format quantized mesh) into a collection of triangles.
 
 The vertices of the triangles contains WGS84 coordinates and height values.
 

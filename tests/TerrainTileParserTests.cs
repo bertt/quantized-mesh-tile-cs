@@ -148,7 +148,7 @@ namespace Terrain.Tiles.Tests
         }
 
         [Test]
-        public void TestCesiumTerrainTileParsing()
+        public void TestSampleTerrainTileParsing()
         {
             // arrange
             const string terrainTileUrl = "https://maps.tilehosting.com/data/terrain-quantized-mesh/9/536/391.terrain?key=wYrAjVu6bV6ycoXliAPl";

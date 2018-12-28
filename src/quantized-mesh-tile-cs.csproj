@@ -13,6 +13,8 @@
     <PackageReleaseNotes>- using BinaryReader instead of FastBinaryReader
 - .NET Standard 2.0
 - Upgrading dependencies</PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/bertt/quantized-mesh-tile-cs</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/bertt/quantized-mesh-tile-cs</RepositoryUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

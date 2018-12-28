@@ -20,6 +20,8 @@ NETStandard.Library 2.0.3 https://www.nuget.org/packages/NETStandard.Library/
 
 ### History
 
+18-12-28: release version 0.3 with BinaryReader instead of FastBinaryReader
+
 18-12-05: release version 0.2 with new .NET project file and conversion to WGS84 (method GetTriangles) removed.
 
 ### Usage

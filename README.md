@@ -34,6 +34,7 @@ var stream = new MemoryStream(bytes);
 var terrainTile = TerrainTileParser.Parse(stream);
 Console.WriteLine("Number of vertices: " + terrainTile.VertexData.vertexCount);
 Console.ReadLine();
+```
 
 ### Benchmark
 

@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.IO;
+using System.Runtime.InteropServices;
 
 namespace Terrain.Tiles
 {
@@ -8,7 +9,7 @@ namespace Terrain.Tiles
         public uint vertexCount;
         public byte[] xy;
 
-        public NormalExtensionData(FastBinaryReader reader, uint vertCount)
+        public NormalExtensionData(BinaryReader reader, uint vertCount)
         {
             vertexCount = vertCount;
             xy = new byte[vertexCount * 2];

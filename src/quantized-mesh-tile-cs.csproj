@@ -1,15 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.1</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Terrain.Tiles</RootNamespace>
     <Description>.NET library for decoding Quantized Mesh tiles</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <AssemblyName>Terrain.Tiles</AssemblyName>
-    <Version>0.2.0</Version>
+    <Version>0.3.0</Version>
     <PackageId>quantized-mesh-tile</PackageId>
     <Authors>Bert Temme</Authors>
     <Company>Geodan</Company>
+    <PackageReleaseNotes>- using BinaryReader instead of FastBinaryReader
+- .NET Standard 2.0
+- Upgrading dependencies</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

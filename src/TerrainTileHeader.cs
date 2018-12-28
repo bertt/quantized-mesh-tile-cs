@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.IO;
+using System.Runtime.InteropServices;
 
 namespace Terrain.Tiles
 {
@@ -32,7 +33,7 @@ namespace Terrain.Tiles
         public double HorizonOcclusionPointY;
         public double HorizonOcclusionPointZ;
 
-        public TerrainTileHeader(FastBinaryReader reader)
+        public TerrainTileHeader(BinaryReader reader)
         {
             CenterX = reader.ReadDouble();
             CenterY = reader.ReadDouble();

@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.IO;
+using System.Runtime.InteropServices;
 
 namespace Terrain.Tiles
 {
@@ -8,7 +9,7 @@ namespace Terrain.Tiles
         public uint triangleCount;
         public ushort[] indices;
 
-        public IndexData16(FastBinaryReader reader)
+        public IndexData16(BinaryReader reader)
         {
             triangleCount = reader.ReadUInt32();
             indices = new ushort[triangleCount * 3];
@@ -47,7 +48,7 @@ namespace Terrain.Tiles
         public uint northVertexCount;
         public ushort[] northIndices;
 
-        public EdgeIndices16(FastBinaryReader reader)
+        public EdgeIndices16(BinaryReader reader)
         {
             westVertexCount = reader.ReadUInt32();
             westIndices = new ushort[westVertexCount];

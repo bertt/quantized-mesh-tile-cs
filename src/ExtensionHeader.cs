@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.IO;
+using System.Runtime.InteropServices;
 
 namespace Terrain.Tiles
 {
@@ -8,7 +9,7 @@ namespace Terrain.Tiles
         public byte extensionId;
         public uint extensionLength;
 
-        public ExtensionHeader(FastBinaryReader reader)
+        public ExtensionHeader(BinaryReader reader)
         {
             extensionId = reader.ReadByte();
             extensionLength = reader.ReadUInt32();

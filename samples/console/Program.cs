@@ -18,6 +18,7 @@ namespace quantized_mesh_tile_sample_console
             var terrainTile = TerrainTileParser.Parse(stream);
             Console.WriteLine("Number of vertices: " + terrainTile.VertexData.vertexCount);
             Console.ReadLine();
+            Console.WriteLine("Press any key to continue...");
         }
     }
 }

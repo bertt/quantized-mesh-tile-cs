@@ -8,15 +8,16 @@ namespace Terrain.Tiles
         {
             var terrainTile = new TerrainTile();
 
-            using (var reader = new FastBinaryReader(tileStream))
+            using (var reader = new BinaryReader(tileStream))
             {
                 terrainTile.Header = new TerrainTileHeader(reader);
                 terrainTile.VertexData = new VertexData(reader);
                 terrainTile.IndexData16 = new IndexData16(reader);
                 terrainTile.EdgeIndices16 = new EdgeIndices16(reader);
 
-                // NormalExtensionData normalData;
-                while (reader.HasMore())
+                // do not read extentions right now...
+                /**
+                while (reader.BaseStream.Position != reader.BaseStream.Length)
                 {
                     var extensionHeader = new ExtensionHeader(reader);
 
@@ -32,6 +33,7 @@ namespace Terrain.Tiles
                         // todo extensionid 2: per vertex watermark
                     }
                 }
+                */
             }
             return terrainTile;
         }

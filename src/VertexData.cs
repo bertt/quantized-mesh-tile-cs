@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Runtime.InteropServices;
 
 namespace Terrain.Tiles
@@ -11,7 +12,7 @@ namespace Terrain.Tiles
         public ushort[] v;
         public ushort[] height;
 
-        public VertexData(FastBinaryReader reader)
+        public VertexData(BinaryReader reader)
         {
             vertexCount = reader.ReadUInt32();
             u = new ushort[vertexCount];

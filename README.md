@@ -53,5 +53,4 @@ Allocated=6.4 kB
  ```
 
 
-```
 ![wireframe](https://cesiumjs.org/images/2015/12-18/terrain-obb-wireframe.png)

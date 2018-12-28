@@ -16,7 +16,7 @@ PM> Install-Package quantized-mesh-tile
 
 ### Dependencies
 
-NETStandard.Library 1.6 https://www.nuget.org/packages/NETStandard.Library/
+NETStandard.Library 2.0.3 https://www.nuget.org/packages/NETStandard.Library/
 
 ### History
 

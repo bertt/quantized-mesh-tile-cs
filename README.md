@@ -55,4 +55,10 @@ Allocated=6.4 kB
  ```
 
 
+ ### Sample: convert to GeoJSON
+
+ See samples/qm2geojosn, sample code for converting a quantized mesh tile to GeoJSON. Sample visualization:
+
+
+
 ![wireframe](https://cesiumjs.org/images/2015/12-18/terrain-obb-wireframe.png)

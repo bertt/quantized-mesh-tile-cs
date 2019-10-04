@@ -57,7 +57,11 @@ Allocated=6.4 kB
 
  ### Sample: convert to GeoJSON
 
- See samples/qm2geojosn, sample code for converting a quantized mesh tile to GeoJSON. Sample visualization:
+ See samples/qm2geojosn, sample code for converting a quantized mesh tile to GeoJSON. 
+ 
+ Result: see https://github.com/bertt/quantized-mesh-tile-cs/blob/master/samples/qm2geojson/triangles.geojson
+ 
+ Sample visualization:
 
 ![heightmap](https://user-images.githubusercontent.com/538812/66191533-dbddc700-e68e-11e9-8a62-e190353c8b90.png)
 

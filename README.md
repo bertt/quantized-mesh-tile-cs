@@ -14,14 +14,6 @@ For more awesome quantized mesh implementations see https://github.com/bertt/awe
 PM> Install-Package quantized-mesh-tile
 ```
 
-### History
-
-23-05-26: release version 0.4 to .NET 6
-
-18-12-28: release version 0.3 with BinaryReader instead of FastBinaryReader
-
-18-12-05: release version 0.2 with new .NET project file and conversion to WGS84 (method GetTriangles) removed.
-
 ### Usage
 
 ```
@@ -54,4 +46,13 @@ Console.ReadLine();
  Sample visualization:
 
 ![heightmap](https://user-images.githubusercontent.com/538812/66191533-dbddc700-e68e-11e9-8a62-e190353c8b90.png)
+
+### History
+
+23-05-26: release version 0.4 to .NET 6
+
+18-12-28: release version 0.3 with BinaryReader instead of FastBinaryReader
+
+18-12-05: release version 0.2 with new .NET project file and conversion to WGS84 (method GetTriangles) removed.
+
 

@@ -2,7 +2,7 @@
 
 [![NuGet Status](http://img.shields.io/nuget/v/quantized-mesh-tile.svg?style=flat)](https://www.nuget.org/packages/quantized-mesh-tile/)
 
-A .NET library (netstandard2.0) for decoding a terrain tile (format quantized mesh).
+A .NET 6 library for decoding a terrain tile (format quantized mesh).
 
 More info about the quantized mesh format: https://github.com/AnalyticalGraphicsInc/quantized-mesh
 
@@ -14,11 +14,9 @@ For more awesome quantized mesh implementations see https://github.com/bertt/awe
 PM> Install-Package quantized-mesh-tile
 ```
 
-### Dependencies
-
-NETStandard.Library 2.0.3 https://www.nuget.org/packages/NETStandard.Library/
-
 ### History
+
+23-05-26: release version 0.4 to .NET 6
 
 18-12-28: release version 0.3 with BinaryReader instead of FastBinaryReader
 
@@ -27,10 +25,10 @@ NETStandard.Library 2.0.3 https://www.nuget.org/packages/NETStandard.Library/
 ### Usage
 
 ```
-const string terrainTileUrl = @"https://maps.tilehosting.com/data/terrain-quantized-mesh/9/536/391.terrain?key=wYrAjVu6bV6ycoXliAPl";
+const string terrainTileUrl = @"https://geodan.github.io/terrain/samples/heuvelrug/tiles/13/8432/6467.terrain";
 
 var client = new HttpClient();
-var bytes = client.GetByteArrayAsync(terrainTileUrl).Result;
+var bytes = await client.GetByteArrayAsync(terrainTileUrl);
 var stream = new MemoryStream(bytes);
 
 var terrainTile = TerrainTileParser.Parse(stream);
@@ -41,23 +39,15 @@ Console.ReadLine();
 ### Benchmark
 
 ```
-BenchmarkDotNet=v0.10.1, OS=Microsoft Windows NT 6.2.9200.0
-Processor=Intel(R) Core(TM) i7-6820HQ CPU 2.70GHz, ProcessorCount=8
-Frequency=10000000 Hz, Resolution=100.0000 ns, Timer=UNKNOWN
-  [Host]     : Clr 4.0.30319.42000, 32bit LegacyJIT-v4.7.3260.0
-  DefaultJob : Clr 4.0.30319.42000, 32bit LegacyJIT-v4.7.3260.0
-
-Allocated=6.4 kB
-
-                    Method |       Mean |    StdDev |
--------------------------- |----------- |---------- |
- ParseVectorTileFromStream | 76.5493 us | 1.6733 us |
- ```
+|                    Method |     Mean |    Error |   StdDev |
+|-------------------------- |---------:|---------:|---------:|
+| ParseVectorTileFromStream | 46.74 us | 0.099 us | 0.087 us |
+```
 
 
  ### Sample: convert to GeoJSON
 
- See samples/qm2geojosn, sample code for converting a quantized mesh tile to GeoJSON. 
+ See samples/qm2geojson, sample code for converting a quantized mesh tile to GeoJSON. 
  
  Result: see https://github.com/bertt/quantized-mesh-tile-cs/blob/master/samples/qm2geojson/triangles.geojson
  

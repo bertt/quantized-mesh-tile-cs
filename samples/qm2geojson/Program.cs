@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
+using System.Threading.Tasks;
 using Terrain.Tiles;
 
 namespace qm2geojson
@@ -12,16 +13,16 @@ namespace qm2geojson
     {
         private const int MAX = 32767;
 
-        static void Main(string[] args)
+        async static Task Main(string[] args)
         {
             // input tile
-            var x = 1066;
-            var y = 776;
-            var level = 10;
-            string terrainTileUrl = $"https://maps.tilehosting.com/data/terrain-quantized-mesh/{level}/{x}/{y}.terrain?key=rmDrA8qf6zp3pasxyYRn";
+            var x = 8432;
+            var y = 6467;
+            var level = 13;
+            string terrainTileUrl = $"https://geodan.github.io/terrain/samples/heuvelrug/tiles/13/8432/6467.terrain";
             
             var client = new HttpClient();
-            var bytes = client.GetByteArrayAsync(terrainTileUrl).Result;
+            var bytes = await client.GetByteArrayAsync(terrainTileUrl);
             var stream = new MemoryStream(bytes);
             var terrainTile = TerrainTileParser.Parse(stream);
 
@@ -67,7 +68,7 @@ namespace qm2geojson
             }
 
             var fc = new FeatureCollection(features);
-            string json = JsonConvert.SerializeObject(fc);
+            string json = JsonConvert.SerializeObject(fc, Formatting.Indented);
             File.WriteAllText("triangles.geojson", json);
         }
 

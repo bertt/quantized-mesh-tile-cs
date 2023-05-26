@@ -1,37 +1,17 @@
 ﻿using NUnit.Framework;
-using System.IO;
-using System.Net.Http;
-using System.Reflection;
 
 namespace Terrain.Tiles.Tests
 {
     public class TerrainTileParserTests
     {
         [Test]
-        public void GetTomTileFromWeb()
-        {
-            // arrange
-            var url = "https://saturnus.geodan.nl/tomt/data/tiles/15/33823/26068.terrain?v=1.0.0";
-            var client = new HttpClient();
-            var bytes = client.GetByteArrayAsync(url).Result;
-            var stream = new MemoryStream(bytes);
-
-            // act
-            var terrainTile = TerrainTileParser.Parse(stream);
-
-            // assert
-            Assert.IsTrue(terrainTile.VertexData.vertexCount>0);
-
-        }
-
-        [Test]
         public void TestTomTileParsing()
         {
             // arrange
-            const string firstTerrainFile = "Terrain.Tiles.Tests.data.86.terrain";
+            const string firstTerrainFile = "data/86.terrain";
 
             // act
-            var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(firstTerrainFile);
+            var pbfStream = File.OpenRead(firstTerrainFile);
             var terrainTile = TerrainTileParser.Parse(pbfStream);
 
             // assert
@@ -43,10 +23,10 @@ namespace Terrain.Tiles.Tests
         public void TestFirstTileParsing()
         {
             // arrange
-            const string firstTerrainFile = "Terrain.Tiles.Tests.data.9_533_383.terrain";
+            const string firstTerrainFile = "data/9_533_383.terrain";
 
             // act
-            var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(firstTerrainFile);
+            var pbfStream = File.OpenRead(firstTerrainFile);
             var terrainTile = TerrainTileParser.Parse(pbfStream);
 
             // assert
@@ -98,10 +78,10 @@ namespace Terrain.Tiles.Tests
         public void TestWatermarkTileParsing()
         {
             // arrange
-            const string firstTerrainFile = "Terrain.Tiles.Tests.data.9_769_319_watermask.terrain";
+            const string firstTerrainFile = "data/9_769_319_watermask.terrain";
 
             // act
-            var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(firstTerrainFile);
+            var pbfStream = File.OpenRead(firstTerrainFile);
             var terrainTile = TerrainTileParser.Parse(pbfStream);
 
             Assert.IsTrue(terrainTile != null);
@@ -117,50 +97,30 @@ namespace Terrain.Tiles.Tests
         public void TestAnotherTileParsing()
         {
             // arrange
-            const string firstTerrainFile = "Terrain.Tiles.Tests.data.10_1563_590_light_watermask.terrain";
+            const string firstTerrainFile = "data/10_1563_590_light_watermask.terrain";
 
             // act
-            var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(firstTerrainFile);
+            var pbfStream = File.OpenRead(firstTerrainFile);
             var terrainTile = TerrainTileParser.Parse(pbfStream);
 
             Assert.IsTrue(terrainTile != null);
 
             // todo: check extensions
         }
-
-        [Test]
-        public void TestSampleTerrainTileParsing()
-        {
-            // arrange
-            const string terrainTileUrl = "https://maps.tilehosting.com/data/terrain-quantized-mesh/9/536/391.terrain?key=wYrAjVu6bV6ycoXliAPl";
-
-            var client = new HttpClient();
-            var bytes = client.GetByteArrayAsync(terrainTileUrl).Result;
-            var stream = new MemoryStream(bytes);
-
-            // act
-            var terrainTile = TerrainTileParser.Parse(stream);
-
-            // assert
-            Assert.IsTrue(terrainTile != null);
-            Assert.IsTrue(terrainTile.VertexData.vertexCount > 0);
-        }
-
 
         [Test]
         public void TestAnotherTileParsing1()
         {
             // arrange
-            const string firstTerrainFile = "Terrain.Tiles.Tests.data.test_0_0_0.terrain";
+            const string firstTerrainFile = "data/test_0_0_0.terrain";
 
             // act
-            var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(firstTerrainFile);
+            var pbfStream = File.OpenRead(firstTerrainFile);
             var terrainTile = TerrainTileParser.Parse(pbfStream);
 
             Assert.IsTrue(terrainTile != null);
 
             // todo: check extensions
         }
-
     }
 }

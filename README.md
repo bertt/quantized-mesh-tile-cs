@@ -28,9 +28,7 @@ PM> Install-Package quantized-mesh-tile
 const string terrainTileUrl = @"https://geodan.github.io/terrain/samples/heuvelrug/tiles/13/8432/6467.terrain";
 
 var client = new HttpClient();
-var bytes = await client.GetByteArrayAsync(terrainTileUrl);
-var stream = new MemoryStream(bytes);
-
+var stream = await client.GetStreamAsync(terrainTileUrl);
 var terrainTile = TerrainTileParser.Parse(stream);
 Console.WriteLine("Number of vertices: " + terrainTile.VertexData.vertexCount);
 Console.ReadLine();

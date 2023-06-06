@@ -1,18 +1,17 @@
 ﻿using System.IO;
 using System.Runtime.InteropServices;
 
-namespace Terrain.Tiles
-{
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct ExtensionHeader
-    {
-        public byte extensionId;
-        public uint extensionLength;
+namespace Terrain.Tiles;
 
-        public ExtensionHeader(BinaryReader reader)
-        {
-            extensionId = reader.ReadByte();
-            extensionLength = reader.ReadUInt32();
-        }
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct ExtensionHeader
+{
+    public byte extensionId;
+    public uint extensionLength;
+
+    public ExtensionHeader(BinaryReader reader)
+    {
+        extensionId = reader.ReadByte();
+        extensionLength = reader.ReadUInt32();
     }
 }

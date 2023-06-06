@@ -1,46 +1,45 @@
 ﻿using NUnit.Framework;
 
-namespace Terrain.Tiles.Tests
+namespace Terrain.Tiles.Tests;
+
+public class ZigZagTests
 {
-    public class ZigZagTests
+    [Test]
+    public void TestZigZagDecode()
     {
-        [Test]
-        public void TestZigZagDecode()
-        {
-            // arrange
-            const int inputVar = 1;
+        // arrange
+        const int inputVar = 1;
 
-            // act
-            var res = ZigZag.Decode(inputVar);
+        // act
+        var res = ZigZag.Decode(inputVar);
 
-            // assert
-            Assert.IsTrue(res == -1);
-        }
+        // assert
+        Assert.IsTrue(res == -1);
+    }
 
-        [Test]
-        public void AnotherTestZigZagDecode()
-        {
-            // arrange
-            const int inputVar = 3;
+    [Test]
+    public void AnotherTestZigZagDecode()
+    {
+        // arrange
+        const int inputVar = 3;
 
-            // act
-            var res = ZigZag.Decode(inputVar);
+        // act
+        var res = ZigZag.Decode(inputVar);
 
-            // assert
-            Assert.IsTrue(res == -2);
-        }
+        // assert
+        Assert.IsTrue(res == -2);
+    }
 
-        [Test]
-        public void TestZigZagEncode()
-        {
-            // arrange
-            const int inputVar = -2;
+    [Test]
+    public void TestZigZagEncode()
+    {
+        // arrange
+        const int inputVar = -2;
 
-            // act
-            var res = ZigZag.Encode(inputVar);
+        // act
+        var res = ZigZag.Encode(inputVar);
 
-            // assert
-            Assert.IsTrue(res == 3);
-        }
+        // assert
+        Assert.IsTrue(res == 3);
     }
 }

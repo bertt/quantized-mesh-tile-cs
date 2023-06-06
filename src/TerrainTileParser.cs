@@ -1,41 +1,40 @@
 ﻿using System.IO;
 
-namespace Terrain.Tiles
+namespace Terrain.Tiles;
+
+public class TerrainTileParser
 {
-    public class TerrainTileParser
+    public static TerrainTile Parse(Stream tileStream)
     {
-        public static TerrainTile Parse(Stream tileStream)
+        var terrainTile = new TerrainTile();
+
+        using (var reader = new BinaryReader(tileStream))
         {
-            var terrainTile = new TerrainTile();
+            terrainTile.Header = new TerrainTileHeader(reader);
+            terrainTile.VertexData = new VertexData(reader);
+            terrainTile.IndexData16 = new IndexData16(reader);
+            terrainTile.EdgeIndices16 = new EdgeIndices16(reader);
 
-            using (var reader = new BinaryReader(tileStream))
+            // do not read extentions right now...
+            /**
+            while (reader.BaseStream.Position != reader.BaseStream.Length)
             {
-                terrainTile.Header = new TerrainTileHeader(reader);
-                terrainTile.VertexData = new VertexData(reader);
-                terrainTile.IndexData16 = new IndexData16(reader);
-                terrainTile.EdgeIndices16 = new EdgeIndices16(reader);
+                var extensionHeader = new ExtensionHeader(reader);
 
-                // do not read extentions right now...
-                /**
-                while (reader.BaseStream.Position != reader.BaseStream.Length)
+                // extensionid 1: per vertex lighting attributes
+                if (extensionHeader.extensionId == 1)
                 {
-                    var extensionHeader = new ExtensionHeader(reader);
-
-                    // extensionid 1: per vertex lighting attributes
-                    if (extensionHeader.extensionId == 1)
-                    {
-                        // oct-encoded per vertex normals
-                        // todo:
-                        // quantizedMeshTile.NormalExtensionData = new NormalExtensionData(reader, quantizedMeshTile.VertexData.vertexCount);
-                    }
-                    else if (extensionHeader.extensionId == 2)
-                    {
-                        // todo extensionid 2: per vertex watermark
-                    }
+                    // oct-encoded per vertex normals
+                    // todo:
+                    // quantizedMeshTile.NormalExtensionData = new NormalExtensionData(reader, quantizedMeshTile.VertexData.vertexCount);
                 }
-                */
+                else if (extensionHeader.extensionId == 2)
+                {
+                    // todo extensionid 2: per vertex watermark
+                }
             }
-            return terrainTile;
+            */
         }
+        return terrainTile;
     }
 }

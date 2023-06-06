@@ -1,21 +1,20 @@
 ﻿using System.IO;
 using System.Runtime.InteropServices;
 
-namespace Terrain.Tiles
+namespace Terrain.Tiles;
+
+[StructLayout(LayoutKind.Sequential, Pack = 1)]
+public struct NormalExtensionData
 {
-    [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public struct NormalExtensionData
+    public uint vertexCount;
+    public byte[] xy;
+
+    public NormalExtensionData(BinaryReader reader, uint vertCount)
     {
-        public uint vertexCount;
-        public byte[] xy;
+        vertexCount = vertCount;
+        xy = new byte[vertexCount * 2];
 
-        public NormalExtensionData(BinaryReader reader, uint vertCount)
-        {
-            vertexCount = vertCount;
-            xy = new byte[vertexCount * 2];
-
-            for (int i = 0; i < vertexCount * 2; i++)
-                xy[i] = reader.ReadByte();
-        }
+        for (int i = 0; i < vertexCount * 2; i++)
+            xy[i] = reader.ReadByte();
     }
 }

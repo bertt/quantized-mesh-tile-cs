@@ -1,10 +1,9 @@
-﻿namespace Terrain.Tiles
+﻿namespace Terrain.Tiles;
+
+public static class Mathf
 {
-    public static class Mathf
+    public static double Lerp(double start, double end, double by)
     {
-        public static double Lerp(double start, double end, double by)
-        {
-            return (1 - by) * start + by * end;
-        }
+        return (1 - by) * start + by * end;
     }
 }

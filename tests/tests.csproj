@@ -27,6 +27,9 @@
     <None Update="data\9_769_319_watermask.terrain">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="data\normals_metadata.terrain">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="data\test_0_0_0.terrain">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

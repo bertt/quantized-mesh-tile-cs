@@ -16,11 +16,11 @@ class Program
     async static Task Main(string[] args)
     {
         // input tile
-        var x = 8432;
-        var y = 6467;
-        var level = 13;
-        string terrainTileUrl = $"https://geodan.github.io/terrain/samples/heuvelrug/tiles/13/8432/6467.terrain";
-        
+        var x = 33730; 
+        var y = 25874;
+        var level = 15;
+
+        string terrainTileUrl = $"https://geodan.github.io/terrain/samples/heuvelrug/tiles/{level}/{x}/{y}.terrain?v=1.1.0";
         var client = new HttpClient();
         var stream = await client.GetStreamAsync(terrainTileUrl);
         var terrainTile = TerrainTileParser.Parse(stream);
@@ -68,7 +68,7 @@ class Program
 
         var fc = new FeatureCollection(features);
         string json = JsonConvert.SerializeObject(fc, Formatting.Indented);
-        File.WriteAllText("triangles.geojson", json);
+        File.WriteAllText($"triangles_{level}_{x}_{y}.geojson", json);
     }
 
     private static Feature GetFeature(Triangle t)

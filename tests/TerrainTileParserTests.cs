@@ -4,6 +4,20 @@ namespace Terrain.Tiles.Tests;
 
 public class TerrainTileParserTests
 {
+
+    [Test]
+    public void TestTerrainTileWithNormalsAndMetadataParsing()
+    {
+        // arrange
+        // Terrain tile from cesium ion
+        const string firstTerrainFile = "data/normals_metadata.terrain";
+
+        // act
+        var pbfStream = File.OpenRead(firstTerrainFile);
+        var terrainTile = TerrainTileParser.Parse(pbfStream);
+    }
+
+
     [Test]
     public void TestTomTileParsing()
     {

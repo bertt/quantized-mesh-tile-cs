@@ -15,7 +15,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="data\0.terrain">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="data\10_1563_590_light_watermask.terrain">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="data\25857.terrain">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="data\86.terrain">

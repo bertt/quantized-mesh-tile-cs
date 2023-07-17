@@ -10,7 +10,8 @@ internal class Program
         const string terrainTileUrl = @"https://geodan.github.io/terrain/samples/heuvelrug/tiles/13/8432/6467.terrain";
 
         var client = new HttpClient();
-        var stream = await client.GetStreamAsync(terrainTileUrl);
+        var response = await client.GetAsync(terrainTileUrl);
+        var stream = await response.Content.ReadAsStreamAsync();
         var terrainTile = TerrainTileParser.Parse(stream);
         Console.WriteLine("Number of vertices: " + terrainTile.VertexData.vertexCount);
     }

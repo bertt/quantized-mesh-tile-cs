@@ -15,14 +15,15 @@ class Program
 
     async static Task Main(string[] args)
     {
-        // input tile
         var x = 33730; 
         var y = 25874;
         var level = 15;
 
         string terrainTileUrl = $"https://geodan.github.io/terrain/samples/heuvelrug/tiles/{level}/{x}/{y}.terrain?v=1.1.0";
         var client = new HttpClient();
-        var stream = await client.GetStreamAsync(terrainTileUrl);
+        var response = await client.GetAsync(terrainTileUrl);
+        var stream = await response.Content.ReadAsStreamAsync();
+
         var terrainTile = TerrainTileParser.Parse(stream);
 
         var bounds = GlobalGeodetic.GlobalGeodetic.TileBounds(x, y, level);

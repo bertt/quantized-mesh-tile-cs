@@ -6,5 +6,8 @@ public class TerrainTile
     public VertexData VertexData { get; set; }
     public IndexData16 IndexData16 { get; set; }
     public EdgeIndices16 EdgeIndices16 { get; set; }
-    // public NormalExtensionData NormalExtensionData { get; set; }
+
+    public bool HasNormals { get; set; }
+    public bool HasMetadata { get; set; }  
+    public bool HasWatermask { get; set; }
 }

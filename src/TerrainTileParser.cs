@@ -26,6 +26,7 @@ public class TerrainTileParser
                 if (extensionHeader.extensionId == 1)
                 {
                     var normals = reader.ReadBytes((int)extensionHeader.extensionLength);
+                    terrainTile.HasNormals  = true;
 
                     // oct-encoded per vertex normals
                     // todo:
@@ -33,6 +34,7 @@ public class TerrainTileParser
                 }
                 else if (extensionHeader.extensionId == 2)
                 {
+                    terrainTile.HasWatermask = true;
                     var watermask = reader.ReadBytes((int)extensionHeader.extensionLength);
                     if (watermask.Length == 1)
                     { 
@@ -47,6 +49,7 @@ public class TerrainTileParser
                 }
                 else if(extensionHeader.extensionId == 4)
                 {
+                    terrainTile.HasMetadata = true;
                     var length = reader.ReadUInt32();
                     var json = System.Text.Encoding.UTF8.GetString(reader.ReadBytes((int)length));
                     var p = 0;

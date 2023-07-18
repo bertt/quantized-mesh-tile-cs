@@ -21,9 +21,6 @@
     <None Update="data\10_1563_590_light_watermask.terrain">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="data\25877.terrain">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Update="data\86.terrain">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

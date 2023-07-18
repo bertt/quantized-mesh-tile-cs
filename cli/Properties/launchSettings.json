@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "testing": {
+      "commandName": "Project",
+      "commandLineArgs": "-i 103511.terrain"
+    }
+  }
+}

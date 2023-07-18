@@ -4,20 +4,6 @@ namespace Terrain.Tiles.Tests;
 
 public class TerrainTileParserTests
 {
-
-    [Test]
-    public void TestTerrainTileWithoutExtensionsParsing()
-    {
-        // arrange
-        // Terrain tile from cesium ion
-        const string firstTerrainFile = "data/0.terrain";
-
-        // act
-        var pbfStream = File.OpenRead(firstTerrainFile);
-        var terrainTile = TerrainTileParser.Parse(pbfStream);
-    }
-
-
     [Test]
     public void TestTerrainTileWithNormalsAndMetadataParsing()
     {

@@ -3,6 +3,7 @@ using GeoJSON.Net.Geometry;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Terrain.Tiles;
@@ -15,20 +16,21 @@ class Program
 
     async static Task Main(string[] args)
     {
-        var x = 33730; 
-        var y = 25874;
-        var level = 15;
+        var x = 134728;
+        var y = 103510;
+        var level = 17;
+        var s =  File.OpenRead(@$"D:\demo\tiles\{level}\{x}\{y}.terrain");
 
-        string terrainTileUrl = $"https://geodan.github.io/terrain/samples/heuvelrug/tiles/{level}/{x}/{y}.terrain?v=1.1.0";
-        var client = new HttpClient();
-        var response = await client.GetAsync(terrainTileUrl);
-        var stream = await response.Content.ReadAsStreamAsync();
+        //string terrainTileUrl = $"https://geodan.github.io/terrain/samples/heuvelrug/tiles/{level}/{x}/{y}.terrain?v=1.1.0";
+        //var client = new HttpClient();
+        //var response = await client.GetAsync(terrainTileUrl);
+        //var stream = await response.Content.ReadAsStreamAsync();
 
-        var terrainTile = TerrainTileParser.Parse(stream);
+        var terrainTile = TerrainTileParser.Parse(s);
 
         var bounds = GlobalGeodetic.GlobalGeodetic.TileBounds(x, y, level);
-        //var minimumHeight = terrainTile.Header.MinimumHeight; // 934
-        //var maximumHeight = terrainTile.Header.MaximumHeight; //3167
+        var minimumHeight = terrainTile.Header.MinimumHeight; // 934
+        var maximumHeight = terrainTile.Header.MaximumHeight; //3167
         //var triangleCount = terrainTile.IndexData16.triangleCount; // 2873
         //var vertexCount = terrainTile.VertexData.vertexCount; // 959
 

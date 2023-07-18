@@ -1,10 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Terrain.Tiles;
-internal class TerrainTileEncoder
+public static class TerrainTileEncoder
 {
+    public static byte[] Encode(List<string> wktTriangles, int z, int x, int y)
+    {
+        // todo: create header
+        // todo create body
+        // todo return bytes
+        return null;
+    }
 }

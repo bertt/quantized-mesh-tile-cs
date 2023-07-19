@@ -29,7 +29,7 @@ jobs:
     - name: Publish cli as aot
       run: |
         cd cli
-        dotnet publish -c Release -r -linux-x64 -o ./publish
+        dotnet publish -c Release -r linux-x64 -o ./publish
     - name: Upload
       uses: actions/upload-artifact@v3
       with:

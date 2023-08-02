@@ -9,7 +9,7 @@ internal class Program
 
     static async Task<int> Main(string[] args)
     {
-        Console.WriteLine("Terrain Tile - CLI");
+        Console.WriteLine("qm-tools");
         if (args.Length == 0)
         {
             args = new string[] { "-h" };
@@ -19,7 +19,7 @@ internal class Program
             name: "-i",
             description: "The file to read and display on the console.");
 
-        var rootCommand = new RootCommand("Sample app for System.CommandLine");
+        var rootCommand = new RootCommand("qm-tools - quantized mesh tools");
         rootCommand.AddOption(fileOption);
 
         rootCommand.SetHandler((file) =>
@@ -39,6 +39,7 @@ internal class Program
             var terrainTile = TerrainTileParser.Parse(pbfStream);
 
             Console.WriteLine("Number of vertices: " + terrainTile.VertexData.vertexCount);
+            Console.WriteLine("Numbre of triangles: " + terrainTile.IndexData16.indices.Length/3);
             Console.WriteLine("Minimum height: " + terrainTile.Header.MinimumHeight);
             Console.WriteLine("Maximum height: " + terrainTile.Header.MaximumHeight);
             Console.WriteLine("Has normals extension: " + terrainTile.HasNormals);

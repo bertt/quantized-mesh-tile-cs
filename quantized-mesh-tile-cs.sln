@@ -13,8 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "benchmarks", "benchmarks\be
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0172BCA7-5D94-4868-BB7D-8284A36E5738}"
 	ProjectSection(SolutionItems) = preProject
-		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
 		README.md = README.md
+		.github\workflows\build.yml = .github\workflows\build.yml
+		release.yml = release.yml
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "qm2geojson", "samples\qm2geojson\qm2geojson.csproj", "{52440CDF-98F7-449B-9132-8B1C12671C4E}"

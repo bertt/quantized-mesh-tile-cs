@@ -202,3 +202,4 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+/qm-tools/Properties/launchSettings.json

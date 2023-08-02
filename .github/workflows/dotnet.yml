@@ -26,12 +26,12 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-build --verbosity normal
-    - name: Publish cli as aot
+    - name: Publish qm-tools
       run: |
-        cd cli
+        cd qm-tools
         dotnet publish -c Release -r linux-x64 -o ./publish
     - name: Upload
       uses: actions/upload-artifact@v3
       with:
-        name: cli-linux
-        path: cli/publish
+        name: qm-tools-linux
+        path: qm-tools/publish

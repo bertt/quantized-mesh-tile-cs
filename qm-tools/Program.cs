@@ -5,6 +5,8 @@ namespace cli;
 
 internal class Program
 {
+    private const int MAX = 32767;
+
     static async Task<int> Main(string[] args)
     {
         Console.WriteLine("Terrain Tile - CLI");
@@ -33,7 +35,7 @@ internal class Program
     {
         if (file != null)
         {
-            var pbfStream = File.OpenRead(file.Name);
+            var pbfStream = File.OpenRead(file.FullName);
             var terrainTile = TerrainTileParser.Parse(pbfStream);
 
             Console.WriteLine("Number of vertices: " + terrainTile.VertexData.vertexCount);
@@ -43,6 +45,18 @@ internal class Program
             Console.WriteLine("Has watermask extension: " + terrainTile.HasWatermask);
             Console.WriteLine("Has metadata extension: " + terrainTile.HasMetadata);
 
+            Console.WriteLine("Vertices (u, v, h)");
+            Console.WriteLine($"u,v on scale 0 - {MAX}");
+
+            for (var n = 0; n < terrainTile.VertexData.vertexCount; n++)
+            {
+                var u = terrainTile.VertexData.u[n]; //32767
+                var v = terrainTile.VertexData.v[n]; // 0
+                var h = terrainTile.VertexData.height[n]; //26707
+                var h1 = Mathf.Lerp(terrainTile.Header.MinimumHeight, terrainTile.Header.MaximumHeight, (double)h / MAX); //2754
+
+                Console.WriteLine($"Vertices (u, v, h): {u}, {v}, {h1}");
+            }
         }
     }
 }

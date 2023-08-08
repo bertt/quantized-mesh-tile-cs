@@ -39,11 +39,34 @@ internal class Program
 
     }
 
+    static bool IsGZipped(FileInfo file)
+    {
+        var byteStream = File.OpenRead(file.FullName);
+        var firstbyte = byteStream.ReadByte();
+        var secondByte = byteStream.ReadByte();
+        byteStream.Close();
+        if (firstbyte == 0x1f && secondByte == 0x8b)
+        {
+            return true;
+        }
+        return false;
+    }
+
     static void ReadFile(FileInfo file)
     {
         Console.WriteLine("Reading file: " + file.FullName);
+
         if (file != null && File.Exists(file.FullName))
         {
+            var isGzipped = IsGZipped(file);
+            Console.WriteLine("Gzipped file: " + isGzipped);
+
+            if(isGzipped)
+            {
+                Console.WriteLine("The file is Gzipped, decompress first. End of program");
+                Environment.Exit(1);
+            }
+
             var pbfStream = File.OpenRead(file.FullName);
             var terrainTile = TerrainTileParser.Parse(pbfStream);
 

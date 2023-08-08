@@ -1,4 +1,6 @@
-﻿using System.CommandLine;
+﻿using GeoJSON.Net.Feature;
+using GeoJSON.Net.Geometry;
+using System.CommandLine;
 using Terrain.Tiles;
 
 namespace cli;
@@ -9,55 +11,83 @@ internal class Program
 
     static async Task<int> Main(string[] args)
     {
-        Console.WriteLine("qm-tools");
-        if (args.Length == 0)
+        Console.WriteLine("qm-tools 0.1");
+
+        // info command
+        var infoCommand = new Command("info", "Gives info of terrain tile");
+
+        var inputOption = new Option<FileInfo?>(
+            aliases: new[] { "--input", "-i" },
+            description: "input terrain tile")
+        { IsRequired = true };
+        infoCommand.AddOption(inputOption);
+
+        infoCommand.SetHandler((input) =>
         {
-            args = new string[] { "-h" };
-        }
+            ReadFile(input!);
+        }, inputOption);
 
-        var fileOption = new Option<FileInfo?>(
-            name: "-i",
-            description: "The file to read and display on the console.");
-
+        
         var rootCommand = new RootCommand("qm-tools - quantized mesh tools");
-        rootCommand.AddOption(fileOption);
-
-        rootCommand.SetHandler((file) =>
-        {
-            ReadFile(file!);
-        },
-            fileOption);
+        rootCommand.AddCommand(infoCommand);
 
         return await rootCommand.InvokeAsync(args);
     }
 
+    static void GetJSON()
+    {
+
+    }
+
     static void ReadFile(FileInfo file)
     {
-        if (file != null)
+        Console.WriteLine("Reading file: " + file.FullName);
+        if (file != null && File.Exists(file.FullName))
         {
             var pbfStream = File.OpenRead(file.FullName);
             var terrainTile = TerrainTileParser.Parse(pbfStream);
 
+            Console.WriteLine("CenterX in ECEF: " + terrainTile.Header.CenterX);
+            Console.WriteLine("CenterY in ECEF: " + terrainTile.Header.CenterY);
+            Console.WriteLine("CenterZ in ECEF: " + terrainTile.Header.CenterZ);
+
             Console.WriteLine("Number of vertices: " + terrainTile.VertexData.vertexCount);
-            Console.WriteLine("Numbre of triangles: " + terrainTile.IndexData16.indices.Length/3);
+            Console.WriteLine("Numbre of triangles: " + terrainTile.IndexData16.indices.Length / 3);
             Console.WriteLine("Minimum height: " + terrainTile.Header.MinimumHeight);
             Console.WriteLine("Maximum height: " + terrainTile.Header.MaximumHeight);
             Console.WriteLine("Has normals extension: " + terrainTile.HasNormals);
             Console.WriteLine("Has watermask extension: " + terrainTile.HasWatermask);
             Console.WriteLine("Has metadata extension: " + terrainTile.HasMetadata);
-
-            Console.WriteLine("Vertices (u, v, h)");
-            Console.WriteLine($"u,v on scale 0 - {MAX}");
-
-            for (var n = 0; n < terrainTile.VertexData.vertexCount; n++)
-            {
-                var u = terrainTile.VertexData.u[n]; //32767
-                var v = terrainTile.VertexData.v[n]; // 0
-                var h = terrainTile.VertexData.height[n]; //26707
-                var h1 = Mathf.Lerp(terrainTile.Header.MinimumHeight, terrainTile.Header.MaximumHeight, (double)h / MAX); //2754
-
-                Console.WriteLine($"Vertices (u, v, h): {u}, {v}, {h1}");
-            }
+            Console.WriteLine($"Minimum height: {terrainTile.Header.MinimumHeight}");
+            Console.WriteLine($"Maximum height: {terrainTile.Header.MaximumHeight}");
         }
+        else
+        {
+            Console.WriteLine("File not found");
+        }
+    }
+
+    private static Feature GetFeature(Triangle t)
+    {
+        var p0 = t.p0.ToGeoJsonPoint();
+        var p1 = t.p1.ToGeoJsonPoint();
+        var p2 = t.p2.ToGeoJsonPoint();
+
+        var height_average = (p0.Altitude + p1.Altitude + p2.Altitude) / 3;
+
+        var coordinates = new List<Position>() { p0, p1, p2, p0 };
+        var polygon = new Polygon(new List<LineString> { new LineString(coordinates) });
+        var featureProperties = new Dictionary<string, object> { { "Height", height_average } };
+        var feature = new Feature(polygon, featureProperties);
+        return feature;
+    }
+}
+
+
+public static class PointExtension
+{
+    public static Position ToGeoJsonPoint(this Wkx.Point p)
+    {
+        return new Position((double)p.Y, (double)p.X, p.Z);
     }
 }

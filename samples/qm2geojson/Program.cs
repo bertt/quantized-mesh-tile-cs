@@ -14,17 +14,27 @@ class Program
 
     async static Task Main(string[] args)
     {
-        var x = 134728;
-        var y = 103510;
-        var level = 17;
-        var s =  File.OpenRead(@$"D:\demo\tiles\{level}\{x}\{y}.terrain");
+        // 205057.terrain
+        // var s file = D:\gisdata\pietersberg\tiles\20\1081611\820230.terrain
+        var x = 1081611;
+        var y = 820230;
+        var level = 20;
+
+        // 820231.terrain
+
+        var url = @$"D:\gisdata\pietersberg\tiles\{level}\{x}\{y}.terrain";
+        // read gzip
+
+        var stream =  File.OpenRead(url);
+        //var bytes = Gzip.IsCompressed(s);
+        //var stream = bytes!=null? new MemoryStream(bytes):s;
 
         //string terrainTileUrl = $"https://geodan.github.io/terrain/samples/heuvelrug/tiles/{level}/{x}/{y}.terrain?v=1.1.0";
         //var client = new HttpClient();
         //var response = await client.GetAsync(terrainTileUrl);
         //var stream = await response.Content.ReadAsStreamAsync();
 
-        var terrainTile = TerrainTileParser.Parse(s);
+        var terrainTile = TerrainTileParser.Parse(stream);
 
         var bounds = GlobalGeodetic.GlobalGeodetic.TileBounds(x, y, level);
         var minimumHeight = terrainTile.Header.MinimumHeight; // 934

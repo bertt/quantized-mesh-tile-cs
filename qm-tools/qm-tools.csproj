@@ -9,9 +9,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.9.1" />
     <PackageReference Include="GeoJSON.Net" Version="1.2.19" />
     <PackageReference Include="global-geodetic-tiles" Version="0.1.0" />
-    <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
     <PackageReference Include="Wkx" Version="0.5.1" />
   </ItemGroup>
 

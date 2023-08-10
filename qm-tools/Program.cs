@@ -1,6 +1,7 @@
-﻿using GeoJSON.Net.Feature;
+﻿using CommandLine;
+using GeoJSON.Net.Feature;
 using GeoJSON.Net.Geometry;
-using System.CommandLine;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using Terrain.Tiles;
 
@@ -10,7 +11,8 @@ internal class Program
 {
     private const int MAX = 32767;
 
-    static async Task<int> Main(string[] args)
+    [DynamicDependency(DynamicallyAccessedMemberTypes.All, typeof(Options))]
+    static void Main(string[] args)
     {
         Console.WriteLine("qm-tools");
 
@@ -19,25 +21,11 @@ internal class Program
 
         Console.WriteLine($"Version: " + assemblyVersion);
 
-        // info command
-        var infoCommand = new Command("info", "Gives info of terrain tile");
-
-        var inputOption = new Option<FileInfo?>(
-            aliases: new[] { "--input", "-i" },
-            description: "input terrain tile")
-        { IsRequired = true };
-        infoCommand.AddOption(inputOption);
-
-        infoCommand.SetHandler((input) =>
-        {
-            ReadFile(input!);
-        }, inputOption);
-
-        
-        var rootCommand = new RootCommand("qm-tools - quantized mesh tools");
-        rootCommand.AddCommand(infoCommand);
-
-        return await rootCommand.InvokeAsync(args);
+        Parser.Default.ParseArguments<Options>(args)
+               .WithParsed<Options>(o =>
+               {
+                   ReadFile(o.Input);
+               });
     }
 
     static void GetJSON()
@@ -58,22 +46,24 @@ internal class Program
         return false;
     }
 
-    static void ReadFile(FileInfo file)
+    static void ReadFile(string file)
     {
-        Console.WriteLine("Reading file: " + file.FullName);
+        var fi = new FileInfo(file);
 
-        if (file != null && File.Exists(file.FullName))
+        Console.WriteLine("Reading file: " + fi.FullName);
+
+        if (file != null && File.Exists(fi.FullName))
         {
-            var isGzipped = IsGZipped(file);
+            var isGzipped = IsGZipped(fi);
             Console.WriteLine("Gzipped file: " + isGzipped);
 
-            if(isGzipped)
+            if (isGzipped)
             {
                 Console.WriteLine("The file is Gzipped, decompress first. End of program");
                 Environment.Exit(1);
             }
 
-            var pbfStream = File.OpenRead(file.FullName);
+            var pbfStream = File.OpenRead(fi.FullName);
             var terrainTile = TerrainTileParser.Parse(pbfStream);
 
             Console.WriteLine("CenterX in ECEF: " + terrainTile.Header.CenterX);

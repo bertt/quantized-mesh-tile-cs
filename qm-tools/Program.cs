@@ -1,6 +1,7 @@
 ﻿using GeoJSON.Net.Feature;
 using GeoJSON.Net.Geometry;
 using System.CommandLine;
+using System.Reflection;
 using Terrain.Tiles;
 
 namespace cli;
@@ -11,7 +12,12 @@ internal class Program
 
     static async Task<int> Main(string[] args)
     {
-        Console.WriteLine("qm-tools 0.1");
+        Console.WriteLine("qm-tools");
+
+        var assembly = Assembly.GetExecutingAssembly();
+        var assemblyVersion = assembly.GetName().Version;
+
+        Console.WriteLine($"Version: " + assemblyVersion);
 
         // info command
         var infoCommand = new Command("info", "Gives info of terrain tile");

@@ -52,7 +52,6 @@ public class TerrainTileParser
                     terrainTile.HasMetadata = true;
                     var length = reader.ReadUInt32();
                     var json = System.Text.Encoding.UTF8.GetString(reader.ReadBytes((int)length));
-                    var p = 0;
                     // todo extensionid 4: Metadata
                 }
             }

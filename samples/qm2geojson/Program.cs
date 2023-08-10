@@ -3,7 +3,6 @@ using GeoJSON.Net.Geometry;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
-using System.Threading.Tasks;
 using Terrain.Tiles;
 
 namespace qm2geojson;
@@ -12,7 +11,7 @@ class Program
 {
     private const int MAX = 32767;
 
-    async static Task Main(string[] args)
+    static void Main(string[] args)
     {
         // 205057.terrain
         // var s file = D:\gisdata\pietersberg\tiles\20\1081611\820230.terrain

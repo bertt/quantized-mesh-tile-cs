@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 
@@ -56,42 +55,15 @@ public struct TerrainTileHeader
 
     public byte[] AsBinary()
     {
-        var centerXBytes = BitConverter.GetBytes(CenterX);
-        var centerYBytes = BitConverter.GetBytes(CenterY);
-        var centerZBytes = BitConverter.GetBytes(CenterZ);
-
-        var minimumHeightBytes = BitConverter.GetBytes(MinimumHeight);
-        var maximumHeightBytes = BitConverter.GetBytes(MaximumHeight);
-
-        var boundingSphereCenterXBytes = BitConverter.GetBytes(BoundingSphereCenterX);
-        var boundingSphereCenterYBytes = BitConverter.GetBytes(BoundingSphereCenterY);
-        var boundingSphereCenterZBytes = BitConverter.GetBytes(BoundingSphereCenterZ);
-        var boundingSphereRadiusBytes = BitConverter.GetBytes(BoundingSphereRadius);
-
-        var horizonOcclusionPointXBytes = BitConverter.GetBytes(HorizonOcclusionPointX);
-        var horizonOcclusionPointYBytes = BitConverter.GetBytes(HorizonOcclusionPointY);
-        var horizonOcclusionPointZBytes = BitConverter.GetBytes(HorizonOcclusionPointZ);
-
-        var bytes = new List<byte>();
-        bytes.AddRange(centerXBytes);
-        bytes.AddRange(centerYBytes);
-        bytes.AddRange(centerZBytes);
-            
-        bytes.AddRange(minimumHeightBytes);
-        bytes.AddRange(maximumHeightBytes);
-            
-        bytes.AddRange(boundingSphereCenterXBytes);
-            
-        bytes.AddRange(boundingSphereCenterYBytes);
-        bytes.AddRange(boundingSphereCenterZBytes);
-        bytes.AddRange(boundingSphereRadiusBytes);
-
-        bytes.AddRange(horizonOcclusionPointXBytes);
-        bytes.AddRange(horizonOcclusionPointYBytes);
-        bytes.AddRange(horizonOcclusionPointZBytes);
-
-        return bytes.ToArray();
+        int size = Marshal.SizeOf(this);
+        byte[] bytes = new byte[size];
+        IntPtr ptr = Marshal.AllocHGlobal(size);
+        Marshal.StructureToPtr(this, ptr, true);
+        Marshal.Copy(ptr, bytes, 0, size);
+        Marshal.FreeHGlobal(ptr);
+        return bytes;
     }
+
     public override bool Equals(object obj)
     {
         if (obj == null || GetType() != obj.GetType())

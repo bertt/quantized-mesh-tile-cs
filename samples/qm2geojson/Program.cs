@@ -15,9 +15,11 @@ class Program
     {
         // 205057.terrain
         // var s file = D:\gisdata\pietersberg\tiles\20\1081611\820230.terrain
-        var x = 1081611;
-        var y = 820230;
-        var level = 20;
+        var x = 33800;
+        var y = 25632;
+        var level = 15;
+
+        // 15\33800\25632.terrain
 
         // 820231.terrain
 

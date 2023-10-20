@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Runtime.InteropServices;
 
 namespace Terrain.Tiles;
@@ -50,5 +52,65 @@ public struct TerrainTileHeader
         HorizonOcclusionPointX = reader.ReadDouble();
         HorizonOcclusionPointY = reader.ReadDouble();
         HorizonOcclusionPointZ = reader.ReadDouble();
+    }
+
+    public byte[] AsBinary()
+    {
+        var centerXBytes = BitConverter.GetBytes(CenterX);
+        var centerYBytes = BitConverter.GetBytes(CenterY);
+        var centerZBytes = BitConverter.GetBytes(CenterZ);
+
+        var minimumHeightBytes = BitConverter.GetBytes(MinimumHeight);
+        var maximumHeightBytes = BitConverter.GetBytes(MaximumHeight);
+
+        var boundingSphereCenterXBytes = BitConverter.GetBytes(BoundingSphereCenterX);
+        var boundingSphereCenterYBytes = BitConverter.GetBytes(BoundingSphereCenterY);
+        var boundingSphereCenterZBytes = BitConverter.GetBytes(BoundingSphereCenterZ);
+        var boundingSphereRadiusBytes = BitConverter.GetBytes(BoundingSphereRadius);
+
+        var horizonOcclusionPointXBytes = BitConverter.GetBytes(HorizonOcclusionPointX);
+        var horizonOcclusionPointYBytes = BitConverter.GetBytes(HorizonOcclusionPointY);
+        var horizonOcclusionPointZBytes = BitConverter.GetBytes(HorizonOcclusionPointZ);
+
+        var bytes = new List<byte>();
+        bytes.AddRange(centerXBytes);
+        bytes.AddRange(centerYBytes);
+        bytes.AddRange(centerZBytes);
+            
+        bytes.AddRange(minimumHeightBytes);
+        bytes.AddRange(maximumHeightBytes);
+            
+        bytes.AddRange(boundingSphereCenterXBytes);
+            
+        bytes.AddRange(boundingSphereCenterYBytes);
+        bytes.AddRange(boundingSphereCenterZBytes);
+        bytes.AddRange(boundingSphereRadiusBytes);
+
+        bytes.AddRange(horizonOcclusionPointXBytes);
+        bytes.AddRange(horizonOcclusionPointYBytes);
+        bytes.AddRange(horizonOcclusionPointZBytes);
+
+        return bytes.ToArray();
+    }
+    public override bool Equals(object obj)
+    {
+        if (obj == null || GetType() != obj.GetType())
+        {
+            return false;
+        }
+
+        var other = (TerrainTileHeader)obj;
+        return Math.Abs(CenterX - other.CenterX) < 0.0001 &&
+            Math.Abs(CenterY - other.CenterY) < 0.0001 &&
+            Math.Abs(CenterZ - other.CenterZ) < 0.0001 &&
+            Math.Abs(MinimumHeight - other.MinimumHeight) < 0.0001 &&
+            Math.Abs(MaximumHeight - other.MaximumHeight) < 0.0001 &&
+            Math.Abs(BoundingSphereCenterX - other.BoundingSphereCenterX) < 0.0001 &&
+            Math.Abs(BoundingSphereCenterY - other.BoundingSphereCenterY) < 0.0001 &&
+            Math.Abs(BoundingSphereCenterZ - other.BoundingSphereCenterZ) < 0.0001 &&
+            Math.Abs(BoundingSphereRadius - other.BoundingSphereRadius) < 0.0001 &&
+            Math.Abs(HorizonOcclusionPointX - other.HorizonOcclusionPointX) < 0.0001 &&
+            Math.Abs(HorizonOcclusionPointY - other.HorizonOcclusionPointY) < 0.0001 &&
+            Math.Abs(HorizonOcclusionPointZ - other.HorizonOcclusionPointZ) < 0.0001;
     }
 }

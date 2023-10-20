@@ -8,43 +8,96 @@ namespace Terrain.Tiles;
 public unsafe struct VertexData
 {
     public uint vertexCount;
-    public ushort[] u;
-    public ushort[] v;
-    public ushort[] height;
+    public int[] u;
+    public int[] v;
+    public int[] height;
 
     public VertexData(BinaryReader reader)
     {
         vertexCount = reader.ReadUInt32();
-        u = new ushort[vertexCount];
-        v = new ushort[vertexCount];
-        height = new ushort[vertexCount];
+        var _u = new ushort[vertexCount];
+        var _v = new ushort[vertexCount];
+        var _height = new ushort[vertexCount];
 
         if (vertexCount > 64 * 1024)
             throw new NotSupportedException("32 bit indices not supported yet");
 
         for (int i = 0; i < vertexCount; i++)
-            u[i] = reader.ReadUInt16();
+            _u[i] = reader.ReadUInt16();
 
         for (int i = 0; i < vertexCount; i++)
-            v[i] = reader.ReadUInt16();
+            _v[i] = reader.ReadUInt16();
 
         for (int i = 0; i < vertexCount; i++)
-            height[i] = reader.ReadUInt16();
+            _height[i] = reader.ReadUInt16();
 
-        ushort _u = 0;
-        ushort _v = 0;
-        ushort _height = 0;
+        u = Decode(_u);
+        v = Decode(_v);
+        height = Decode(_height);
+    }
 
-        for (int i = 0; i < vertexCount; i++)
+    public static int[] Decode(ushort[] items)
+    {
+        var result = new int[items.Length];
+        int item = 0;
+        
+        for (int i = 0; i < items.Length; i++)
         {
-            _u += (ushort)ZigZag.Decode(u[i]);
-            _v += (ushort)ZigZag.Decode(v[i]);
-            _height += (ushort)ZigZag.Decode(height[i]);
+            var decode = ZigZag.Decode(items[i]);
+            item += decode;
 
-            u[i] = _u;
-            v[i] = _v;
-            height[i] = _height;
+            result[i] = item;
         }
+        return result;
+    }
+
+    public byte[] AsBinary()
+    {
+        var stream = new MemoryStream();
+        var writer = new BinaryWriter(stream);
+
+        var vertexCountBytes = BitConverter.GetBytes(vertexCount);
+        writer.Write(vertexCountBytes);
+
+        var u_encoded = Encode(u);
+        var u_bytes = AsBytes(u_encoded);
+        writer.Write(u_bytes);
+
+        var v_encoded = Encode(v);
+        var v_bytes = AsBytes(v_encoded);
+        writer.Write(v_bytes);
+
+        var h_encoded = Encode(height);
+        var h_bytes = AsBytes(h_encoded);
+        writer.Write(h_bytes);
+
+        return stream.ToArray();
+    }
+
+    public static ushort[] Encode(int[] items)
+    {
+        var result = new ushort[items.Length];
+        result[0] = ZigZag.Encode(items[0]);
+        for (int i = 1; i < items.Length ; i++)
+        {
+            var ud = items[i] - items[i-1];
+            var encode = ZigZag.Encode(ud);
+
+            result[i] = encode;
+        }
+        return result;
+    }
+    private byte[] AsBytes(ushort[] items)
+    {
+        var stream = new MemoryStream();
+        var writer = new BinaryWriter(stream);
+        for (int i = 0; i < items.Length; i++)
+        {
+            var bytes = BitConverter.GetBytes(items[i]);
+            writer.Write(bytes);
+        }
+
+        return stream.ToArray();
     }
 
 }

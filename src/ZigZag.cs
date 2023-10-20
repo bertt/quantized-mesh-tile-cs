@@ -2,13 +2,13 @@
 
 public static class ZigZag
 {
-    public static long Decode(long n)
+    public static int Decode(ushort n)
     {
         return (n >> 1) ^ (-(n & 1));
     }
 
-    public static long Encode(long n)
+    public static ushort Encode(long n)
     {
-        return (n << 1) ^ (n >> 31);
+        return (ushort)((n >> 31) ^ (n << 1));
     }
 }

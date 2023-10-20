@@ -1,4 +1,6 @@
-﻿namespace Terrain.Tiles;
+﻿using System.IO;
+
+namespace Terrain.Tiles;
 
 public class TerrainTile
 {
@@ -8,6 +10,20 @@ public class TerrainTile
     public EdgeIndices16 EdgeIndices16 { get; set; }
 
     public bool HasNormals { get; set; }
-    public bool HasMetadata { get; set; }  
+    public bool HasMetadata { get; set; }
     public bool HasWatermask { get; set; }
+
+    public byte[] AsBinary()
+    {
+        using (var stream = new MemoryStream())
+        {
+            using (var writer = new BinaryWriter(stream))
+            {
+                writer.Write(Header.AsBinary());
+                writer.Write(VertexData.AsBinary());
+                // todo add indexes and edgeindices
+            }
+            return stream.ToArray();
+        }
+    }
 }

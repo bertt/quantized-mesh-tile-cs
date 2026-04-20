@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Terrain.Tiles</RootNamespace>
     <Description>.NET library for decoding Quantized Mesh tiles</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -10,11 +10,12 @@
     <PackageId>quantized-mesh-tile</PackageId>
     <Authors>Bert Temme</Authors>
     <Company></Company>
-    <PackageReleaseNotes>To .NET 6.0</PackageReleaseNotes>
+    <PackageReleaseNotes>To .NET 10.0</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/bertt/quantized-mesh-tile-cs</PackageProjectUrl>
 	<PackageLicenseFile></PackageLicenseFile>
 	<RepositoryUrl>https://github.com/bertt/quantized-mesh-tile-cs</RepositoryUrl>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

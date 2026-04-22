@@ -92,7 +92,7 @@ public static class TerrainTileEncoder
     {
         if (max <= min) return 0;
         double normalized = (value - min) / (max - min);
-        return (int)Math.Round(Math.Clamp(normalized, 0.0, 1.0) * MaxQuantized);
+        return (int)Math.Round(Math.Max(0.0, Math.Min(1.0, normalized)) * MaxQuantized);
     }
 
     private static EdgeIndices16 BuildEdgeIndices(List<(int u, int v, int h)> vertices)

@@ -69,7 +69,7 @@ The encoder:
 
 ### History
 
-26-04-20: release version 0.5 with quantized-mesh tile encoding support
+26-04-22: release version 0.5 with quantized-mesh tile encoding support
 
 23-05-26: release version 0.4 to .NET 6
 

@@ -1,20 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Terrain.Tiles</RootNamespace>
-    <Description>.NET library for decoding Quantized Mesh tiles</Description>
+    <Description>.NET Standard 2.0 library for decoding Quantized Mesh tiles; compatible with .NET Framework 4.6.1+, .NET Core 2.0+, and modern .NET.</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <AssemblyName>Terrain.Tiles</AssemblyName>
     <Version>0.4.0</Version>
     <PackageId>quantized-mesh-tile</PackageId>
     <Authors>Bert Temme</Authors>
     <Company></Company>
-    <PackageReleaseNotes>To .NET 6.0</PackageReleaseNotes>
+    <PackageReleaseNotes>Targets netstandard2.0 for broad compatibility with .NET Framework 4.6.1+, .NET Core 2.0+, and modern .NET.</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/bertt/quantized-mesh-tile-cs</PackageProjectUrl>
 	<PackageLicenseFile></PackageLicenseFile>
 	<RepositoryUrl>https://github.com/bertt/quantized-mesh-tile-cs</RepositoryUrl>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<LangVersion>latestMajor</LangVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

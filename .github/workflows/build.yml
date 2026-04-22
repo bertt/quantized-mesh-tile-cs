@@ -39,7 +39,7 @@ jobs:
       run: dotnet build ./quantized-mesh-tile-cs.slnx --no-restore -c Release
 
     - name: Test
-      run: dotnet test ./quantized-mesh-tile-cs.slnx --no-build --verbosity normal
+      run: dotnet test ./quantized-mesh-tile-cs.slnx --no-build -c Release --verbosity normal
 
     - name: Publish qm-tools
       working-directory: ./qm-tools

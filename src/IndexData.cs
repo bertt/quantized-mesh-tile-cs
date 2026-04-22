@@ -24,6 +24,25 @@ public struct IndexData16
                 highest++;
         }
     }
+
+    public byte[] AsBinary()
+    {
+        var stream = new MemoryStream();
+        var writer = new BinaryWriter(stream);
+
+        writer.Write(triangleCount);
+
+        ushort highest = 0;
+        for (int i = 0; i < indices.Length; i++)
+        {
+            ushort code = (ushort)(highest - indices[i]);
+            writer.Write(code);
+            if (code == 0)
+                highest++;
+        }
+
+        return stream.ToArray();
+    }
 }
 
 [StructLayout(LayoutKind.Sequential, Pack = 1)]
@@ -73,5 +92,25 @@ public struct EdgeIndices16
 
         for (int i = 0; i < northVertexCount; i++)
             northIndices[i] = reader.ReadUInt16();
+    }
+
+    public byte[] AsBinary()
+    {
+        var stream = new MemoryStream();
+        var writer = new BinaryWriter(stream);
+
+        writer.Write(westVertexCount);
+        foreach (var idx in westIndices) writer.Write(idx);
+
+        writer.Write(southVertexCount);
+        foreach (var idx in southIndices) writer.Write(idx);
+
+        writer.Write(eastVertexCount);
+        foreach (var idx in eastIndices) writer.Write(idx);
+
+        writer.Write(northVertexCount);
+        foreach (var idx in northIndices) writer.Write(idx);
+
+        return stream.ToArray();
     }
 }

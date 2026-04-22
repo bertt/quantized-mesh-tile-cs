@@ -14,9 +14,9 @@ For more awesome quantized mesh implementations see https://github.com/bertt/awe
 PM> Install-Package quantized-mesh-tile
 ```
 
-### Usage
+### Usage: Decoding
 
-```
+```csharp
 const string terrainTileUrl = @"https://geodan.github.io/terrain/samples/heuvelrug/tiles/13/8432/6467.terrain";
 
 var client = new HttpClient();
@@ -25,6 +25,28 @@ var terrainTile = TerrainTileParser.Parse(stream);
 Console.WriteLine("Number of vertices: " + terrainTile.VertexData.vertexCount);
 Console.ReadLine();
 ```
+
+### Usage: Encoding
+
+Encode a list of WKT `POLYGON Z` triangles into a quantized-mesh tile byte stream.
+The tile coordinates `(z, x, y)` follow the TMS scheme and determine the geographic extent.
+
+```csharp
+var triangles = new List<string>
+{
+    "POLYGON Z ((7.38 44.65 303, 7.38 45.0 320, 7.56 44.82 310, 7.38 44.65 303))",
+    "POLYGON Z ((7.38 44.65 303, 7.73 44.65 350, 7.56 44.82 310, 7.38 44.65 303))"
+};
+
+byte[] bytes = TerrainTileEncoder.Encode(triangles, z: 9, x: 533, y: 383);
+File.WriteAllBytes("output.terrain", bytes);
+```
+
+The encoder:
+- Deduplicates vertices and quantizes coordinates to `[0, 32767]`
+- Computes the tile header (ECEF center, bounding sphere, height range)
+- Identifies edge vertices (west, south, east, north borders)
+- Serializes all sections to the quantized-mesh binary format
 
 ### Benchmark
 
@@ -46,6 +68,8 @@ Console.ReadLine();
 ![heightmap](https://user-images.githubusercontent.com/538812/66191533-dbddc700-e68e-11e9-8a62-e190353c8b90.png)
 
 ### History
+
+26-04-20: release version 0.5 with quantized-mesh tile encoding support
 
 23-05-26: release version 0.4 to .NET 6
 

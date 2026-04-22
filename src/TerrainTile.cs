@@ -21,7 +21,8 @@ public class TerrainTile
             {
                 writer.Write(Header.AsBinary());
                 writer.Write(VertexData.AsBinary());
-                // todo add indexes and edgeindices
+                writer.Write(IndexData16.AsBinary());
+                writer.Write(EdgeIndices16.AsBinary());
             }
             return stream.ToArray();
         }

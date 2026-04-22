@@ -13,8 +13,7 @@ jobs:
         kind: ['linux', 'windows', 'macOS']
         include:
           - kind: linux
-            # ubuntu-latest gives gclib error? 
-            os: ubuntu-20.04
+            os: ubuntu-22.04
             target: linux-x64
           - kind: windows
             os: windows-latest
@@ -22,24 +21,30 @@ jobs:
           - kind: macOS
             os: macos-latest
             target: osx-x64
+
     runs-on: ${{ matrix.os }}
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
+
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 7.0.x
+        dotnet-version: 10.0.x
+
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore ./quantized-mesh-tile-cs.slnx
+
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build ./quantized-mesh-tile-cs.slnx --no-restore -c Release
+
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test ./quantized-mesh-tile-cs.slnx --no-build -c Release --verbosity normal
+
     - name: Publish qm-tools
+      working-directory: ./qm-tools
       shell: bash
       run: |
-        cd qm-tools
         dotnet tool install -g dotnetCampus.TagToVersion
         dotnet build -c Release
         dotnet TagToVersion -t ${{ github.ref }}
@@ -47,7 +52,6 @@ jobs:
         dotnet publish -c Release -r ${{ matrix.target }} -o publish
         rm -f ./publish/*.pdb
         cd publish
-
         if [ "${{ matrix.target }}" == "win-x64" ]; then
           7z a -tzip ../qmtools-${{ matrix.target }}.zip .
         else
@@ -60,4 +64,3 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         files: "./qm-tools/qmtools-${{ matrix.target }}.*"
-

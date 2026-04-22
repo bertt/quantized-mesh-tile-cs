@@ -1,0 +1,14 @@
+<Solution>
+  <Folder Name="/samples/">
+    <Project Path="samples/qm2geojson/qm2geojson.csproj" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path=".github/workflows/build.yml" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="benchmarks/benchmarks.csproj" />
+  <Project Path="qm-tools/qm-tools.csproj" />
+  <Project Path="src/quantized-mesh-tile-cs.csproj" />
+  <Project Path="tests/tests.csproj" />
+</Solution>

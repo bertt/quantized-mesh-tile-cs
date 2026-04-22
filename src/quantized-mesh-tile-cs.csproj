@@ -15,7 +15,7 @@
 	<PackageLicenseFile></PackageLicenseFile>
 	<RepositoryUrl>https://github.com/bertt/quantized-mesh-tile-cs</RepositoryUrl>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
-	<LangVersion>latest</LangVersion>
+	<LangVersion>latestMajor</LangVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
